@@ -9,6 +9,9 @@ class $SearchInput {
   clearInput () {
     this.element.value = "";
   }
+  getInput() {
+    return this.element.value;
+  }
 }
 
 export const SearchInput = new $SearchInput();

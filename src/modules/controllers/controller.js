@@ -1,11 +1,13 @@
-import * as view from "../views/views.js";
+import * as view from "../views/index.js";
 
-const controller = () => {
+export const initController = () => {
 
     const Header = view.Header;
-    Header.test(); 
     Header.render(document.querySelector("#App"));
-    console.log("controller");
+    // console.log("controller");
 }
 
-export default controller;
+export const searchController = (query) => {
+    console.log("dddd");
+    
+}

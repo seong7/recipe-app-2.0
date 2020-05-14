@@ -1,4 +1,5 @@
 import { SearchInput } from "./SearchInput/SearchInput.js";
+import {searchController} from "../../../../controllers/controller.js";
 
 class $SearchForm {
   constructor() {
@@ -37,7 +38,11 @@ class $SearchForm {
   addEvent() {
     this.element.addEventListener("submit", (e) => {
       e.preventDefault();
-      SearchInput.clearInput();
+      if(SearchInput.getInput()){
+        searchController();
+        SearchInput.clearInput();
+
+      }
       // console.log("dddd");
     });
   }

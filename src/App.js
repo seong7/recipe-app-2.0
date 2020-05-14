@@ -1,5 +1,5 @@
 import Sample from "./Sample.js";
-import controller from "./modules/controllers/controller.js";
+import {initController} from "./modules/controllers/controller.js";
 
 export default class App {
     $target = null
@@ -9,6 +9,6 @@ export default class App {
         this.$target = $target
 
         // this.dashboard = new Sample($target)
-        controller();
+        initController();
     }
 }

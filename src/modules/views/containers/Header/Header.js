@@ -1,4 +1,4 @@
-import { SearchForm, Likes } from "../../components/components.js";
+import { SearchForm, Likes } from "../../components/index.js";
 
 class $Header {
   constructor() {

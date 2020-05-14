@@ -4,7 +4,8 @@
   "description": "",
   "main": "App.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --runInBand",
+    "watch": "jest --watch --runInBand --no-cache"
   },
   "author": "Jason",
   "license": "ISC",
