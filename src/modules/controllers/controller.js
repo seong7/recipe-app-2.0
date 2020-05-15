@@ -9,6 +9,13 @@ export const initController = () => {
 
     Header.render(document.querySelector("#App"));
     Nav.render(document.querySelector("#App"));
+
+    // url 의 hash 값 초기화
+    document.location.hash = "";
+
+    // hashchange 이벤트로 recipe controller 동작
+    // 현재 앱에서 a tag 들을 클릭하면 # 값 변함
+    window.addEventListener("hashchange", recipeController);
 }
 
 // Search 기능 controller
@@ -45,8 +52,13 @@ export const likeController = () => {
 }
 
 // Recipe 기능 controller
-export const recipeController = () => {
+export const recipeController = async () => {
+    const rId = window.location.hash.replace("#", "");
+    // console.log("recipeController")
     // 1. 
+    if(rId) {
+        
+    }
 }
 
 // Ingredient 기능 controller 
