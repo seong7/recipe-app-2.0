@@ -1,4 +1,4 @@
-import state from "./state.js";
+import state from "../state/state.js";
 import * as view from "../views/views.js";
 import {SearchModel} from "../models/models.js";
 
@@ -20,14 +20,12 @@ export const searchController = async (query) => {
 
     if(query) {
         loader.render(Nav.element, "nav");
-        state.search = state.search ? state.search : new SearchModel();
-        // state.search = new SearchModel();
-
+        const search = state.set("search", new SearchModel());
+        
         try {
-            await state.search.getResults(fetch, query);
+            await search.getResults(fetch, query);
             // console.log(state);
-
-            Nav.renderList(state.search.result);
+            Nav.renderList(search.result);
         }
         catch(error) {
             if(error.message === "해당 음식 정보가 없습니다.") alert(error.message);
@@ -37,10 +35,6 @@ export const searchController = async (query) => {
             loader.remove("nav");
         }
     }
-
-    // 결과 state 에 담겨 있음
-    // 결과 출력 및 페이지네이션 작업
-    // loader 작업
 }
 
 // LIke 기능 controller
@@ -52,7 +46,7 @@ export const likeController = () => {
 
 // Recipe 기능 controller
 export const recipeController = () => {
-
+    // 1. 
 }
 
 // Ingredient 기능 controller 

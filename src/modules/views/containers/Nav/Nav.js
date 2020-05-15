@@ -1,4 +1,4 @@
-import state from "../../../controllers/state.js"
+import state from "../../../state/state.js"
 import {ResultList, PageBtn} from "../../views.js";
 
 class $Nav {
@@ -31,7 +31,7 @@ class $Nav {
 
             if(btn) {
                 const goToPage = parseInt(btn.dataset.goto, 10); // 10 진수로 바꿈
-                this.renderList(state.search.result, goToPage);
+                this.renderList(state.get("search").result, goToPage);
             }
         })
     }

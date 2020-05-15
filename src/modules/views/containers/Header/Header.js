@@ -11,11 +11,6 @@ class $Header {
     
     this.element.appendChild(SearchForm.element);
     this.element.appendChild(Likes.element);
-    // this.markup = `
-    //       <header>
-    //           <img src="./src/images/logo.png" alt="Logo" class="header__logo" />
-    //       </header>
-    //     `;
   }
   test() {
     console.log("Header test");

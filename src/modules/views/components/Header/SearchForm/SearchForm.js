@@ -42,15 +42,13 @@ class $SearchForm {
       if(query){
         searchController(query);
         SearchInput.clearInput();
-
       }
       // console.log("dddd");
     });
   }
-  render() {
-    return this.markup;
-    // target.insertAdjacentHTML("afterbegin", this.markup);
-  }
+  // render(target) {
+  //   target.insertAdjacentHTML("afterbegin", this.markup);
+  // }
 }
 
 export const SearchForm = new $SearchForm();
