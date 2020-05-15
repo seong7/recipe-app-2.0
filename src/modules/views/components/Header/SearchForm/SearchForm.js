@@ -38,8 +38,9 @@ class $SearchForm {
   addEvent() {
     this.element.addEventListener("submit", (e) => {
       e.preventDefault();
-      if(SearchInput.getInput()){
-        searchController();
+      const query = SearchInput.getInput();
+      if(query){
+        searchController(query);
         SearchInput.clearInput();
 
       }
