@@ -128,9 +128,9 @@ describe("\n => Recipe Model", () => {
       })
     );
     return Recipe.getRecipe(fetchMock, "451654621321")
-      .then((result) => {
-        // mock fn Test 는 필요없음
-      })
+      // .then((result) => {
+      //   // mock fn Test 는 필요없음
+      // })
       .catch((e) => {
         // 본 함수 Error Test
         expect(e).toEqual(new Error("해당 Recipe 정보가 없습니다."));

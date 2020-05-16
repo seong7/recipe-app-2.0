@@ -1,14 +1,17 @@
 import state from "../state/state.js";
 import * as view from "../views/views.js";
-import {SearchModel} from "../models/models.js";
+import {SearchModel, RecipeModel} from "../models/models.js";
 
-// 최초 render controller
+// 최초 init controller
 export const initController = () => {
     const Header = view.Header;
     const Nav = view.Nav;
+    const Main = view.Main;
 
     Header.render(document.querySelector("#App"));
     Nav.render(document.querySelector("#App"));
+    Main.render(document.querySelector("#App"));
+
 
     // url 의 hash 값 초기화
     document.location.hash = "";
@@ -21,12 +24,12 @@ export const initController = () => {
 // Search 기능 controller
 export const searchController = async (query) => {
     const Nav = view.Nav;
-    const loader = view.Loader;
+    const Loader = view.Loader;
 
     Nav.clearNav();
 
     if(query) {
-        loader.render(Nav.element, "nav");
+        Loader.render(Nav.element, "nav");
         const search = state.set("search", new SearchModel());
         
         try {
@@ -36,10 +39,10 @@ export const searchController = async (query) => {
         }
         catch(error) {
             if(error.message === "해당 음식 정보가 없습니다.") alert(error.message);
-            else console.log(error);
+            else throw error;
         }
         finally{
-            loader.remove("nav");
+            Loader.remove("nav");
         }
     }
 }
@@ -55,9 +58,29 @@ export const likeController = () => {
 export const recipeController = async () => {
     const rId = window.location.hash.replace("#", "");
     // console.log("recipeController")
-    // 1. 
+
+    const Main = view.Main;
+    const Loader = view.Loader;
+    const ResultList = view.ResultList;
+    const recipe = state.set("recipe", new RecipeModel());
+
     if(rId) {
-        
+        Main.clear();
+        Loader.render(Main.element, "main");
+        ResultList.hightlightSelected(rId);
+        try {
+            await recipe.getRecipe(fetch, rId);
+            // console.log(res);
+            Main.renderRecipe(recipe.result);
+        }
+        catch (e) {
+            if(e.message === "해당 Recipe 정보가 없습니다.") alert(e.message);
+            else throw e;
+        }
+        finally{
+            Loader.remove("main");
+        }
+        // await 
     }
 }
 

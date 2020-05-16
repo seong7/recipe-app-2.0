@@ -1,5 +1,7 @@
 export class RecipeModel {
-  constructor() {}
+  constructor() {
+    this.result;
+  }
 
   getRecipe(fetch, id) {
     if (id) {
@@ -13,11 +15,11 @@ export class RecipeModel {
         .catch((e) => {
           throw e;
         });
-      this.title = res.data.recipe.title;
-      this.author = res.data.recipe.publisher;
-      this.img = res.data.recipe.image_url;
-      this.url = res.data.recipe.source_url;
-      this.ingredients = res.data.recipe.ingredients; // array
+      this.title = res.title;
+      this.author = res.publisher;
+      this.img = res.image_url;
+      this.url = res.source_url;
+      this.ingredients = res.ingredients; // array
       return res;
     } else {
       return "no id";

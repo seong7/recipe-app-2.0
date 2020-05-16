@@ -33,6 +33,21 @@ class $ResultList {
       this.element.insertAdjacentHTML("beforeend", markup);
     }
 
+    // 선택된 li 강조
+    hightlightSelected (id) {
+        // 기존 선택 음식 active 삭제
+        const prevSelected = document.querySelector(".results__link--active");
+        if(prevSelected) {
+            prevSelected.classList.remove("results__link--active");
+        }
+        
+        // 현재 선택 음식 active 추가
+        const selected = document.querySelector(`.results__link[href*="#${id}"`);
+        if(selected) {
+            selected.classList.add("results__link--active");
+        }
+    }
+
     clearList() {
         this.element.innerHTML = "";
     }

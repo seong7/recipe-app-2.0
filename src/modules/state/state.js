@@ -13,15 +13,15 @@ class State {
     }
     set(key, value){
         if(this.key.find((c) => c === key)){
-            this[key] = this.get(key) ? this.get(key) : value;
+            this[key] = this.get(key) ? this.get(key) : value; // 중복 생성 방지
             return this[key];
         }
         else {
-            return new Error("정해진 key 만 set 가능")
+            throw new Error("정해진 key 만 set 가능");
         }
     }
     update(key, value){
-        // 대기
+        // 대기 ( 필요 없음 )
     }
     get(key) {
         return this[key];
