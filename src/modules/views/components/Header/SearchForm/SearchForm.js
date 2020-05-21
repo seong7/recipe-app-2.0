@@ -43,7 +43,6 @@ class $SearchForm {
         searchController(query);
         SearchInput.clearInput();
       }
-      // console.log("dddd");
     });
   }
   // render(target) {

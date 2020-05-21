@@ -143,8 +143,8 @@ body {
 }
 
 #App {
-  /* margin: 1.5em auto; */
-  /* max-width: 1280px; */
+  margin: 0em auto;
+  max-width: 1500px;
   /* margin: 4vw auto; */
   background-color: #fff;
   border-radius: 6px;
@@ -154,11 +154,10 @@ body {
   /* GRID 설정 부분 !!!! */
   display: grid;
   grid-template-rows: 10rem minmax(100rem, auto); /* 위에서부터 각 행에 대한 높이 정함*/
-  grid-template-columns: 1.1fr 2fr;  /* 왼쪽부터 각 열에대한 비율 정함 (고정값주면 고정됨, fr 은 비율) */
-  grid-template-areas :  /* 행 열을 맞춰서 작성 */
-    "head head" 
+  grid-template-columns: 1.1fr 2fr; /* 왼쪽부터 각 열에대한 비율 정함 (고정값주면 고정됨, fr 은 비율) */
+  grid-template-areas:  /* 행 열을 맞춰서 작성 */
+    "head head"
     "results recipe";
-  
 }
 
 h1,
@@ -361,7 +360,7 @@ h5 {
 }
 
 .loader {
-  margin : 5rem auto;
+  margin: 5rem auto;
   text-align: center;
 }
 .loader svg {
@@ -381,11 +380,10 @@ h5 {
   }
 }
 
-
 /* RECIPE 부분 */
 
 .recipe {
-  // position: relative;
+  /* position: relative; */
   background-color: #f9f5f3;
   border-top: 1px solid #fff;
 }
@@ -403,7 +401,11 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(to right bottom, #fbdb89, rgba(244, 130, 130, 0.1));
+  background-image: linear-gradient(
+    to right bottom,
+    #fbdb89,
+    rgba(244, 130, 130, 0.1)
+  );
   opacity: 0.6;
 }
 .recipe__img {
@@ -437,26 +439,26 @@ h5 {
   top: 11rem;
   right: 1rem;
   height: 100%;
-  button {
-    position: sticky;
-    top: 3rem;
-    cursor: pointer;
-    height: 4.5rem;
-    width: 4.5rem;
-    border: none;
-    border-radius: 1rem;
-    background-color: rgb(255, 229, 212);
-    color: #f48982;
-    font-size: 2rem;
-    box-shadow: 0 0rem 0.5rem 0.4rem rgba(59, 53, 53, 0.09);
-    outline: none;
-  }
-  .results__toggle {
-    margin-right: 1rem;
-    transition: all 0.5s 0.2s; // name | duration | delay
-  }
 }
-// 모바일 세로, 가로 사이즈에서만 표시되도록 설정
+.sides__btns button {
+  position: sticky;
+  top: 3rem;
+  cursor: pointer;
+  height: 4.5rem;
+  width: 4.5rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: rgb(255, 229, 212);
+  color: #f48982;
+  font-size: 2rem;
+  box-shadow: 0 0rem 0.5rem 0.4rem rgba(59, 53, 53, 0.09);
+  outline: none;
+}
+.results__toggle {
+  margin-right: 1rem;
+  transition: all 0.5s 0.2s; /* name | duration | delay */
+}
+/* 모바일 세로, 가로 사이즈에서만 표시되도록 설정 */
 @media only screen and (min-width: 768px) {
   .results__toggle,
   .shopping__scroll {

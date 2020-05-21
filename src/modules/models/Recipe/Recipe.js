@@ -9,17 +9,18 @@ export class RecipeModel {
         .then((r) => r.json())
         .then((r) => {
           if (r["error"]) throw new Error("해당 Recipe 정보가 없습니다."); // 예외 처리
-          this.result = r.recipe;
+          this.result = r.recipe; // 비동기 이므로 then 안에서 assign 해야함
           return this.result;
         })
         .catch((e) => {
           throw e;
         });
-      this.title = res.title;
-      this.author = res.publisher;
-      this.img = res.image_url;
-      this.url = res.source_url;
-      this.ingredients = res.ingredients; // array
+      // this.result = id;
+      // this.title = res.title;
+      // this.author = res.publisher;
+      // this.img = res.image_url;
+      // this.url = res.source_url;
+      // this.ingredients = res.ingredients; // array
       return res;
     } else {
       return "no id";

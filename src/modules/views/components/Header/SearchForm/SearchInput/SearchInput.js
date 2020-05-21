@@ -5,8 +5,6 @@ class $SearchInput {
     this.element.setAttribute("type", "text");
     this.element.setAttribute("placeholder", "try pizza, pasta, fries ...");
     
-    // test!!
-    this.element.value = "pizza";
   }
 
   clearInput () {

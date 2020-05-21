@@ -1,16 +1,19 @@
+import {LikesBtn} from "../../views.js"
+
 class $Main {
   constructor() {
     const main = document.createElement("main");
     main.className = "main recipe";
 
     this.element = main;
+    this.addEvent();
   }
 
   render(target) {
     target.appendChild(this.element);
   }
 
-  renderRecipe(recipe) {
+  renderRecipe(recipe, isLiked) {
     //   console.log(recipe);
     const markup = `
             <figure class="recipe__fig">
@@ -61,13 +64,13 @@ class $Main {
                     </div>
 
                 </div>
-                <button class="recipe__love">
+                ${/*<button class="recipe__love">
                     <svg class="header__likes">
                         <use href="./src/images/icons.svg#icon-heart${
-                          /* isLiked ? "" :*/ "-outlined"
+                           isLiked ? "" : "-outlined"
                         }"></use>
                     </svg>
-                </button>
+                    </button>*/`<!-- liked btn 자리 -->`}
             </div>
 
             <div class="recipe__ingredients">
@@ -94,7 +97,7 @@ class $Main {
                 </p>
                 <a class="btn-small recipe__btn" href="${
                   recipe.url
-                }" target="_blank">
+                }" target="_blank"> 
                     <span>Directions</span>
                     <svg class="search__icon">
                         <use href="./src/images/icons.svg#icon-triangle-right"></use>
@@ -105,11 +108,19 @@ class $Main {
         `;
 
         this.element.insertAdjacentHTML("afterbegin", markup);
-        // this.element.innerHTML=  "<h1>test</h1>";
+        LikesBtn.render(document.querySelector(".recipe__details"), isLiked);
   }
 
   clear() {
     this.element.innerHTML = "";
+  }
+
+  addEvent () {
+    this.element.addEventListener("click", (e) => {
+        // if(e.target.matches(".recipe__love, .recipe__love *")){
+        //     likeController();
+        // }
+    });
   }
 }
 
