@@ -4,6 +4,7 @@ export * from "./components/Nav/ResultList/ResultList.js"
 export * from "./components/Nav/PageBtn/PageBtn.js"
 export * from "./components/Loader/Loader.js"
 export * from "./components/Main/LikesBtn/LikesBtn.js"
+export * from "./components/Main/IngredientsList/IngredientsList.js"
 export * from "./containers/Header/Header.js";
 export * from "./containers/Nav/Nav.js";
 export * from "./containers/Main/Main.js";

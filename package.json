@@ -15,5 +15,6 @@
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "jest": "^26.0.1"
-  }
+  },
+  "dependencies": {}
 }

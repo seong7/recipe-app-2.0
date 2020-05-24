@@ -107,6 +107,10 @@ export const recipeController = async () => {
         try {
             await recipe.getRecipe(fetch, rId);
             // console.log(res);
+            recipe.parseIngredients();
+            recipe.calcTime();
+            recipe.calcServings();
+            
             Main.renderRecipe(recipe.result, likes.isLiked(rId));
 
             ResultList.hightlightSelected(rId);

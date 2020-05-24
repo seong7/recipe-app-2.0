@@ -30,14 +30,14 @@ export class RecipeModel {
   // 요리시간
   calcTime() {
     // Assuming that we need 15 min for each 3 ingredients
-    const numIngredient = this.ingredients.length;
+    const numIngredient = this.result.ingredients.length;
     const periods = Math.ceil(numIngredient / 3);
-    this.time = periods * 15;
+    this.result.time = periods * 15;
   }
 
   // 몇인분? _ 4로 통합(알고리즘 생략)
   calcServings() {
-    this.servings = 4;
+    this.result.servings = 4;
   }
 
   // 재료 format 바꾸기 (숫자 / 이름)
@@ -65,7 +65,7 @@ export class RecipeModel {
     ]; // 위의 단위들의 요약 버전
     const units = [...unitsShort, "kg", "g"]; // 위에 kg, g 추가하는 법 예시
 
-    const newIngredients = this.ingredients.map((el, index) => {
+    const newIngredients = this.result.ingredients.map((el) => {
       // 1) Uniform units (단위 통합)
       let ingredient = el.toLowerCase(); // 소문자 변환
 
@@ -137,20 +137,21 @@ export class RecipeModel {
       }
       return objIng;
     });
-    this.ingredients = newIngredients;
+    this.result.ingredients = newIngredients;
+    // console.log(newIngredients);
   }
 
   updateServings(btnType) {
     const type = btnType;
     // Serving
-    const newServings = type === "dec" ? this.servings - 1 : this.servings + 1;
+    const newServings = type === "dec" ? this.result.servings - 1 : this.result.servings + 1;
 
     // Ingredients
-    this.ingredients.forEach((ingredient) => {
+    this.result.ingredients.forEach((ingredient) => {
       const ing = ingredient;
-      ing.count *= newServings / this.servings; /* 증가한 비율만큼 곱하기 */
+      ing.count *= newServings / this.result.servings; /* 증가한 비율만큼 곱하기 */
     });
 
-    this.servings = newServings;
+    this.result.servings = newServings;
   }
 }

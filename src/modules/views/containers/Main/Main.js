@@ -1,4 +1,4 @@
-import {LikesBtn} from "../../views.js"
+import {LikesBtn, IngredientsList} from "../../views.js"
 
 class $Main {
   constructor() {
@@ -70,15 +70,15 @@ class $Main {
                            isLiked ? "" : "-outlined"
                         }"></use>
                     </svg>
-                    </button>*/`<!-- liked btn 자리 -->`}
+                    </button>*/`<!-- liked btn -->`}
             </div>
 
             <div class="recipe__ingredients">
-                <ul class="recipe__ingredient-list">
-                    ${recipe.ingredients
-                      /*.map((el) => createIngredient(el))
-                    .join("")*/}
-                </ul>
+                ${/*<ul class="recipe__ingredient-list">
+                    recipe.ingredients
+                      .map((el) => createIngredient(el))
+                    .join("")
+                </ul>*/`<!-- recipe ul -->`}
                 <button class="btn-small recipe__btn recipe__btn--add">
                     <svg class="search__icon">
                         <use href="./src/images/icons.svg#icon-shopping-cart"></use>
@@ -96,7 +96,7 @@ class $Main {
                     </span>. Please check out directions at their website.
                 </p>
                 <a class="btn-small recipe__btn" href="${
-                  recipe.url
+                  recipe.source_url
                 }" target="_blank"> 
                     <span>Directions</span>
                     <svg class="search__icon">
@@ -109,6 +109,7 @@ class $Main {
 
         this.element.insertAdjacentHTML("afterbegin", markup);
         LikesBtn.render(document.querySelector(".recipe__details"), isLiked);
+        IngredientsList.render(document.querySelector(".recipe__ingredients"), recipe.ingredients);
   }
 
   clear() {
