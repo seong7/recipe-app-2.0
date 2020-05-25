@@ -1,3 +1,4 @@
+import state from "../../../state/state.js"
 import {LikesBtn, IngredientsList} from "../../views.js"
 
 class $Main {
@@ -118,9 +119,20 @@ class $Main {
 
   addEvent () {
     this.element.addEventListener("click", (e) => {
-        // if(e.target.matches(".recipe__love, .recipe__love *")){
-        //     likeController();
-        // }
+        if(e.target.matches(".btn-decrease, .btn-decrease *")){
+            // console.log(e.target)
+            if(state.recipe.result.servings > 1){
+                state.recipe.updateServings("dec");
+            }
+        }
+        if(e.target.matches(".btn-increase, .btn-increase *")){
+            // console.log(e.target)
+            state.recipe.updateServings("inc");
+        }
+
+        // Update Servings & IngredientsList
+        document.querySelector(".recipe__info-data--people").textContent = state.recipe.result.servings;
+        IngredientsList.render(document.querySelector(".recipe__ingredients"), state.recipe.result.ingredients);
     });
   }
 }

@@ -29,7 +29,7 @@ export class LikesModel {
         const storage = JSON.parse(localStorage.getItem("likes"));
         if(storage) {
             this.likes = storage;
-            console.log(this.likes);
+            // console.log(this.likes);
         };
     }
 }

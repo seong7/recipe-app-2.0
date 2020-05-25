@@ -7,6 +7,7 @@ class $IngredientsList {
     }
 
     renderList(ingredients) {
+        // console.log(ingredients);
         this.clear();
         const list = ingredients.map((el) => List.createIngredient(el)).join("");
         this.element.insertAdjacentHTML("afterbegin", list);

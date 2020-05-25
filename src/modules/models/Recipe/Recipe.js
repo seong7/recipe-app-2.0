@@ -138,6 +138,7 @@ export class RecipeModel {
       return objIng;
     });
     this.result.ingredients = newIngredients;
+    // console.log(this.result);
     // console.log(newIngredients);
   }
 

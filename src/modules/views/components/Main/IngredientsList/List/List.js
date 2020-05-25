@@ -1,6 +1,7 @@
 class $List {
 
     createIngredient (ingredient) {
+      // console.log(ingredient);
         return `
             <li class="recipe__item">
                 <svg class="recipe__icon">
@@ -16,6 +17,7 @@ class $List {
     }
 
     formatCount = (count) => {
+      // console.log(count);
         if (count) {
           let newCount = count;
           const [int, dec] = newCount.toString().split(".");
@@ -32,6 +34,9 @@ class $List {
             newCount = [int, newDec].join(".");
           }
           return newCount;
+        }
+        else {
+          return "?";
         }
       };
 }
