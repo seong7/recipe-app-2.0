@@ -94,7 +94,7 @@ class $Main {
                 <p class="recipe__directions-text">
                     This recipe was carefully designed and tested by
                     <span class="recipe__by">
-                        ${recipe.author}
+                        ${recipe.publisher}
                     </span>. Please check out directions at their website.
                 </p>
                 <a class="btn-small recipe__btn" href="${

@@ -7,6 +7,11 @@ window.state = state;
 
 // 최초 init controller
 export const initController = () => {
+    const search = state.set("search", new SearchModel());
+    const likes = state.set("likes", new LikesModel());
+    const recipe = state.set("recipe", new RecipeModel());
+    const shopping = state.set("shopping", new ShoppingModel());
+
     const Header = view.Header;
     const Nav = view.Nav;
     const Main = view.Main;
@@ -14,11 +19,6 @@ export const initController = () => {
     Header.render(document.querySelector("#App"));
     Nav.render(document.querySelector("#App"));
     Main.render(document.querySelector("#App"));
-
-    const search = state.set("search", new SearchModel());
-    const likes = state.set("likes", new LikesModel());
-    const recipe = state.set("recipe", new RecipeModel());
-    const shopping = state.set("shopping", new ShoppingModel());
     
     if(localStorage["lastSearch"] && localStorage["lastId"]){
         searchController(localStorage.getItem("lastSearch"));
@@ -131,9 +131,11 @@ export const shoppingController = () => {
     const shopping = state.get("shopping");
     const recipe = state.get("recipe");
 
+    const Header = view.Header;
     // console.log(recipe);
     recipe.result.ingredients.forEach((ing) => {
         shopping.addItem(ing.count, ing.unit, ing.ingredient);
+        Header.toggleShoppingBtn();
     })
     // console.log(shopping);
 }

@@ -232,11 +232,14 @@ h5 {
 .shopping__btn {
   padding-top: 0.2rem;
   font-size: 2.8rem;
-  color: #f9677a;
+  color: #00000045;
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
+}
+.shopping__btn.active{
+  color: #f9677a;
 }
 .shopping__modal-wrapper{
   display: flex;
@@ -254,16 +257,18 @@ h5 {
   width: 500px;
   height: 0px;
   background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(to right bottom, #ffcb3c00, #ff766d40);
   transition: height 0.7s ease-in-out;
   overflow: hidden;
   border-radius: 10px;
-  justify-content: center;
 }
 .shopping__modal-content.visible{
   height : 600px !important;
   padding: 3rem 3rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: start;
 }
 .shopping__modal-header {
   justify-self: center;
@@ -301,6 +306,7 @@ h5 {
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0 2rem;
+  width: 100%;
 }
 
 .shopping__list::-webkit-scrollbar {
@@ -322,9 +328,9 @@ h5 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 1.3rem 0;
   border-bottom: 1.5px solid #ffbdbbb8;
   position: relative;
@@ -374,10 +380,9 @@ h5 {
 }
 
 .shopping__delete {
-  margin-top: 0.5rem;
   position: absolute;
   right: 1.5rem;
-  background-image: linear-gradient(to right, transparent 0%, #fff 40%, #fff 100%);
+  /* background-image: linear-gradient(to right, transparent 0%, #fff 40%, #fff 100%); */
   /* width: 3.75rem;
   padding-left: 2rem; */
   visibility: hidden;
@@ -425,8 +430,11 @@ h5 {
   visibility: visible;
   opacity: 1;
 }
-.likes__icon {
+.likes__icon.active {
   fill: #f59a83;
+}
+.likes__icon {
+  fill: #00000045;
   height: 3.75rem;
   width: 3.75rem;
 }

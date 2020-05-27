@@ -50,6 +50,7 @@ class $ShoppingModal {
 
     createShoppingList() {
         const list = this.data.shopping;
+        // console.log(list);
         ShoppingList.setState({
             list,
             target: this.modal,
@@ -58,7 +59,6 @@ class $ShoppingModal {
 
     close() {
         this.setState({
-            ...this.data,
             visible: false,
         })
     }
@@ -75,7 +75,6 @@ class $ShoppingModal {
         else {
             this.element.classList.toggle("hidden", true)
             this.modal.classList.toggle("visible", false);
-            
         }
     }
 
@@ -86,6 +85,29 @@ class $ShoppingModal {
             // if(e.target.classList.contains("shopping__modal-content")){
                 this.close();
             }
+
+            if(e.target.classList.contains("shopping__copy")){
+                // console.log("copy");
+                let copyText = "";
+
+                // string 조작
+                this.data.shopping.forEach((obj) => {
+                    copyText += `${Math.floor(obj.count * 10) / 10} ${obj.unit ? `${obj.unit} ` : ""}${
+                    obj.ingredient
+                    } \n`;
+                });
+
+                // 임시 textarea 생성해 값으로 해당 string 넣어주기
+                const tempEl = document.createElement("textarea");
+                tempEl.value = copyText;
+                document.body.appendChild(tempEl);
+
+                // 값 선택하여 복사 후 textarea 제거
+                tempEl.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempEl);
+            }
+
         })
 
         function handleEscapeKey (e) {

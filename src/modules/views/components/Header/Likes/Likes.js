@@ -15,7 +15,18 @@ class $Likes {
 
     }
 
+    toggleLikesIcon(likesArray) {
+      if(likesArray[0]) {
+        // console.log(document.querySelector(".likes__icon"));
+        document.querySelector(".likes__icon").classList.add("active");
+      }
+      else{
+        document.querySelector(".likes__icon").classList.remove("active");
+      }
+    }
+
     renderLikes(likesArray) {
+      this.toggleLikesIcon(likesArray);
       LikesPanel.renderLikes(likesArray);
     }
 
