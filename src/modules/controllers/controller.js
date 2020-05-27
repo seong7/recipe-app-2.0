@@ -1,6 +1,6 @@
 import state from "../state/state.js";
 import * as view from "../views/views.js";
-import {SearchModel, RecipeModel, LikesModel} from "../models/models.js";
+import {SearchModel, RecipeModel, LikesModel, ShoppingModel} from "../models/models.js";
 
 // 작업용
 window.state = state;
@@ -18,11 +18,11 @@ export const initController = () => {
     const search = state.set("search", new SearchModel());
     const likes = state.set("likes", new LikesModel());
     const recipe = state.set("recipe", new RecipeModel());
+    const shopping = state.set("shopping", new ShoppingModel());
     
     if(localStorage["lastSearch"] && localStorage["lastId"]){
         searchController(localStorage.getItem("lastSearch"));
         recipeController(localStorage.getItem("lastId"));
-        
     
         // url 의 hash 값 초기화
         document.location.hash = localStorage.getItem("lastId");
@@ -126,4 +126,14 @@ export const recipeController = async () => {
     }
 }
 
-// Ingredient 기능 controller 
+// shopping 기능 controller 
+export const shoppingController = () => {
+    const shopping = state.get("shopping");
+    const recipe = state.get("recipe");
+
+    // console.log(recipe);
+    recipe.result.ingredients.forEach((ing) => {
+        shopping.addItem(ing.count, ing.unit, ing.ingredient);
+    })
+    // console.log(shopping);
+}

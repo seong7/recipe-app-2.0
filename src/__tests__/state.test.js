@@ -6,7 +6,7 @@ describe("\n => State", () => {
       "search",
       "recipe",
       "likes",
-      "list",
+      "shopping",
       "test",
     ]));
 

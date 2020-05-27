@@ -1,5 +1,6 @@
 export * from "./components/Header/SearchForm/SearchForm.js";
 export * from "./components/Header/Likes/Likes.js"
+export * from "./components/Header/Shopping/Shopping.js"
 export * from "./components/Nav/ResultList/ResultList.js"
 export * from "./components/Nav/PageBtn/PageBtn.js"
 export * from "./components/Loader/Loader.js"

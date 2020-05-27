@@ -7,7 +7,7 @@ class State {
         this.recipe;
         this.likes;
         this.list;
-        this.key = ["search", "recipe", "likes", "list", "test"];
+        this.key = ["search", "recipe", "likes", "shopping", "test"];
 
         this.test = ["Test Pass"];
     }
