@@ -540,15 +540,15 @@ h5 {
   opacity: 0.4;
 }
 .results__fig img{
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 0.3s;
 }
-.results__fig img.active{
+/* .results__fig img.active{
   display:block;
-}
+} */
 
 .likes__fig img {
   display: block;
@@ -596,11 +596,12 @@ h5 {
 }
 
 .loader {
-  margin: 5rem auto;
+  margin: 20rem auto;
   text-align: center;
 }
 .loader.large{
-  margin: 0rem 0rem;
+  margin: 0;
+  padding: 15rem;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -612,6 +613,21 @@ h5 {
   width: 5.5rem;
   fill: #f59a83;
   transform-origin: 44% 50%;
+  animation: rotate 1.5s infinite linear;
+}
+
+.loader.nav {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin: 0;
+}
+.loader.nav svg{
+  margin: auto;
+  height: 4rem;
+  width: 4rem;
+  fill: #f59a83;
+  transform-origin: 50% 50%;
   animation: rotate 1.5s infinite linear;
 }
 

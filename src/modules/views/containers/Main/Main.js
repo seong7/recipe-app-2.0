@@ -1,5 +1,5 @@
 import state from "../../../state/state.js"
-import {LikesBtn, IngredientsList} from "../../views.js"
+import {LikesBtn, IngredientsList, Image} from "../../views.js"
 import {shoppingController} from "../../../controllers/controller.js"
 
 class $Main {
@@ -8,6 +8,7 @@ class $Main {
     main.className = "main recipe";
 
     this.element = main;
+
     this.addEvent();
   }
 
@@ -18,12 +19,12 @@ class $Main {
   renderRecipe(recipe, isLiked) {
     //   console.log(recipe);
     const markup = `
-            <figure class="recipe__fig">
+            ${/*<figure class="recipe__fig">
                 <img src="${recipe.image_url}" alt="${recipe.title}" class="recipe__img">
                 <h1 class="recipe__title">
                     <span>${recipe.title}</span>
                 </h1>
-            </figure>
+            </figure>*/``}
             <div class="sides__btns">
             ${
               /*
@@ -109,9 +110,33 @@ class $Main {
             </div>
         `;
 
-        this.element.insertAdjacentHTML("afterbegin", markup);
+        this.element.insertAdjacentElement("afterbegin", this.createImageFigure(recipe.image_url, recipe.title, recipe.title));
+        this.element.insertAdjacentHTML("beforeend", markup);
         LikesBtn.render(document.querySelector(".recipe__details"), isLiked);
         IngredientsList.render(document.querySelector(".recipe__ingredients"), recipe.ingredients);
+  }
+
+  createImageFigure (src, alt, title) {
+      /*<figure class="recipe__fig">
+                <img src="${recipe.image_url}" alt="${recipe.title}" class="recipe__img">
+                <h1 class="recipe__title">
+                    <span>${recipe.title}</span>
+                </h1>
+            </figure>*/
+    
+    const figure = document.createElement("figure");
+    figure.className = "recipe__fig";
+
+    const img = new Image(src, alt, "recipe__img");
+    img.render(figure);
+
+    figure.insertAdjacentHTML("beforeend", `
+        <h1 class="recipe__title">
+            <span>${title}</span>
+        </h1>
+    `)
+
+    return figure;
   }
 
   clear() {

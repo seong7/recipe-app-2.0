@@ -1,3 +1,5 @@
+import {Image} from "../../../views.js"
+
 class $ResultList {
     constructor() {
         const ul = document.createElement("ul");
@@ -16,20 +18,13 @@ class $ResultList {
     }
 
     addLi (result) {
-      // img 생성
-      const img = document.createElement("img");
-      img.src = result.image_url;
-      img.alt = result.title;
-
-      img.onload = () => {
-        console.log("완료 !!");
-        img.className = "active" ; 
-      }
-
       // figure 생성
       const figure = document.createElement("figure");
       figure.className = "results__fig";
-      figure.appendChild(img);
+
+      // img 생성
+      const img = new Image(result.image_url, result.title);
+      img.render(figure);
 
       // a 생성
       const a = document.createElement("a");

@@ -47,9 +47,8 @@ export const searchController = async (query) => {
     // const temp = Nav.element.innerHTML;
     
     if(query) {
-        const search = state.get("search");
-        
         Loader.render(Nav.element, "nav");
+        const search = state.get("search");
         
         try {
             await search.getResults(fetch, query);
