@@ -4,7 +4,7 @@ class $Loader {
 
     render (target, targetName) {
         target.insertAdjacentHTML("afterbegin", `
-            <div class="${targetName}__loader loader">
+            <div class="${targetName}__loader loader ${targetName === "nav" ? `large`:``}">
                 <svg>
                     <use href="./src/images/icons.svg#icon-cw"></use>
                 </svg>

@@ -49,14 +49,11 @@ export const searchController = async (query) => {
     if(query) {
         const search = state.get("search");
         
+        Loader.render(Nav.element, "nav");
         
         try {
             await search.getResults(fetch, query);
-
-            Nav.clearNav(); // 검색 에러 발생 시에만 Nav clear 
-            Loader.render(Nav.element, "nav");
-            
-            await Nav.renderList(search.result);
+            Nav.renderList(search.result);
             localStorage.setItem("lastSearch", query);
         }
         catch(error) {
@@ -69,7 +66,7 @@ export const searchController = async (query) => {
             else throw error;
         }
         finally{
-            // Loader.remove("nav");
+            Loader.remove("nav");
         }
     }
 }

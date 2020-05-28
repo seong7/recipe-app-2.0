@@ -16,21 +16,39 @@ class $ResultList {
     }
 
     addLi (result) {
-        // a 태그에 href = "#..." 하면 page reload 안함 
-        const markup = `
-        <li>
-            <a class="results__link" href="#${result.recipe_id}">
-                <figure class="results__fig">
-                    <img src="${result.image_url}" alt="${result.title}">
-                </figure>
-                <div class="results__data">
-                    <h4 class="results__name">${/*limitRecipeTitle(result.title)*/result.title}</h4>
-                    <p class="results__author">${result.publisher}</p>
-                </div>
-            </a>
-        </li>
-        `;
-      this.element.insertAdjacentHTML("beforeend", markup);
+      // img 생성
+      const img = document.createElement("img");
+      img.src = result.image_url;
+      img.alt = result.title;
+
+      img.onload = () => {
+        console.log("완료 !!");
+        img.className = "active" ; 
+      }
+
+      // figure 생성
+      const figure = document.createElement("figure");
+      figure.className = "results__fig";
+      figure.appendChild(img);
+
+      // a 생성
+      const a = document.createElement("a");
+      a.className = "results__link";
+      a.href = `#${result.recipe_id}`;  // a 태그에 href = "#..." 하면 page reload 안함 
+
+      a.appendChild(figure);
+      a.insertAdjacentHTML("beforeend", `
+        <div class="results__data">
+            <h4 class="results__name">${/*limitRecipeTitle(result.title)*/result.title}</h4>
+            <p class="results__author">${result.publisher}</p>
+        </div>
+      `);
+
+      // li 생성
+      const li = document.createElement("li");
+      li.appendChild(a);
+
+      this.element.insertAdjacentElement("beforeend", li);
     }
 
     // 선택된 li 강조
@@ -54,3 +72,7 @@ class $ResultList {
 }
 
 export const ResultList = new $ResultList(); 
+
+// window.checkImg = () => {
+//     console.log(ResultList.img.complete);
+// }
