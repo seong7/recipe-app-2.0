@@ -9,3 +9,4 @@ export * from "./components/Main/IngredientsList/IngredientsList.js"
 export * from "./containers/Header/Header.js";
 export * from "./containers/Nav/Nav.js";
 export * from "./containers/Main/Main.js";
+export * from "./containers/Alerts/Alerts.js";

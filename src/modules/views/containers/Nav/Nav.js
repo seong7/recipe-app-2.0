@@ -13,8 +13,9 @@ class $Nav {
     }
 
     renderList (searchResults, page = 1) {
+        const $Resultlist = ResultList.render(searchResults, page, 10);
         this.clearNav();
-        this.element.appendChild(ResultList.render(searchResults, page, 10));
+        this.element.appendChild($Resultlist);
         // 아래는 페이지 버튼
         this.element.insertAdjacentHTML("beforeend", PageBtn.render(page, searchResults.length, 10));
     }

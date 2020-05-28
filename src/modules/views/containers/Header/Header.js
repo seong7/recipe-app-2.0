@@ -8,17 +8,16 @@ class $Header {
     this.element.insertAdjacentHTML(
       "afterbegin",
       `
+      <div class="header__logo-wrapper">
         <img src="./src/images/logo.png" alt="Logo" class="header__logo" />
+        <span>v 2.0</span>
+      </div>
       `
     );
 
     this.element.appendChild(SearchForm.element);
     this.element.appendChild(this.createHeaderBtns());
     this.addEvent();
-  }
-  test() {
-    console.log("Header test");
-    console.log(this.element);
   }
 
   createHeaderBtns () {
@@ -34,12 +33,6 @@ class $Header {
     
     // target.insertAdjacentHTML("afterbegin", this.markup);
     target.appendChild(this.element)
-  }
-
-  toggleBtns (btn_name) {
-   if(btn_name === "likes"){
-      // Likes.toggleLikesBtn();
-    }
   }
 
   toggleShoppingBtn() {

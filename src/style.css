@@ -155,7 +155,7 @@ body {
   background-color: #fff;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
+  box-shadow: 0 2rem 6rem 0.5rem rgba(86, 98, 101, 0.48);
 
   /* GRID 설정 부분 !!!! */
   display: grid;
@@ -164,6 +164,8 @@ body {
   grid-template-areas:  /* 행 열을 맞춰서 작성 */
     "head head"
     "results recipe";
+
+  /* position: relative; */
 }
 
 h1,
@@ -184,11 +186,34 @@ h5 {
   padding: 1rem 0rem;
 }
 
+.header__logo-wrapper {
+  display: flex;
+}
 .header__logo {
   margin-left: 4rem;
   height: 4.5rem;
   display: block;
 }
+.header__logo + span {
+  align-self: flex-end;
+}
+
+.alert {
+  position: fixed;
+  top: 0rem;
+  /* background-color: black; */
+  /* width: 100px;
+  height: 100px; */
+  /* top: -5rem;
+  left: 0rem;
+  width: 20rem;
+  height: 8rem;
+  background-color: #fff;
+  transition: all 0.1s ease-in-out; */
+}
+/* .alert.active {
+  transform: translateY(5rem);
+} */
 
 .search {
   background-color: #fff;
@@ -236,10 +261,10 @@ h5 {
   background: none;
   border: none;
   outline: none;
-  cursor: pointer;
 }
 .shopping__btn.active{
   color: #f9677a;
+  cursor: pointer;
 }
 .shopping__modal-wrapper{
   display: flex;
@@ -401,8 +426,6 @@ h5 {
 }
 
 
-
-
 .hidden {
   display: none !important;
 }
@@ -415,7 +438,6 @@ h5 {
   display: inline-block;
 }
 .likes__field{
-  cursor: pointer;
   margin-left: 4rem;
   display: inline-block;
   align-items: center;
@@ -424,14 +446,15 @@ h5 {
   transition: all 0.3s;
 }
 .likes__panel:hover,
-.likes__hover:hover + .likes__panel {
+.likes__field.active:hover + .likes__panel {
   visibility: visible !important;
   opacity: 1 !important;
-  visibility: visible;
-  opacity: 1;
+  /* visibility: visible;
+  opacity: 1; */
 }
 .likes__icon.active {
   fill: #f59a83;
+  cursor: pointer;
 }
 .likes__icon {
   fill: #00000045;

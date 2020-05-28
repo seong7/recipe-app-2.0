@@ -15,10 +15,13 @@ export const initController = () => {
     const Header = view.Header;
     const Nav = view.Nav;
     const Main = view.Main;
+    const Alerts = view.Alerts;
 
     Header.render(document.querySelector("#App"));
     Nav.render(document.querySelector("#App"));
     Main.render(document.querySelector("#App"));
+    // Footer.render(document.querySelector("#App"));
+    Alerts.initRender(document.querySelector("#App"));
     
     if(localStorage["lastSearch"] && localStorage["lastId"]){
         searchController(localStorage.getItem("lastSearch"));
@@ -40,26 +43,31 @@ export const initController = () => {
 export const searchController = async (query) => {
     const Nav = view.Nav;
     const Loader = view.Loader;
-
-    Nav.clearNav();
-
+    const Alerts = view.Alerts;
+    // const temp = Nav.element.innerHTML;
+    
     if(query) {
-        Loader.render(Nav.element, "nav");
         const search = state.get("search");
         
+        Nav.clearNav();
+        Loader.render(Nav.element, "nav");
+
         try {
             await search.getResults(fetch, query);
-            // console.log(state);
             Nav.renderList(search.result);
-
             localStorage.setItem("lastSearch", query);
         }
         catch(error) {
-            if(error.message === "해당 음식 정보가 없습니다.") alert(error.message);
+            if(error.message === "해당 음식 정보가 없습니다.") {
+                // alert(error.message);
+                // Alert.setState({visible: true, message: "해당 음식 정보가 없습니다.", color: "red"});
+                Alerts.createAlert();
+                // Nav.element.innerHTML = temp;
+            }
             else throw error;
         }
         finally{
-            Loader.remove("nav");
+            // Loader.remove("nav");
         }
     }
 }

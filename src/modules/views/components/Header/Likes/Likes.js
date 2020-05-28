@@ -15,18 +15,20 @@ class $Likes {
 
     }
 
-    toggleLikesIcon(likesArray) {
+    toggleLikesBtn(likesArray) {
       if(likesArray[0]) {
         // console.log(document.querySelector(".likes__icon"));
         document.querySelector(".likes__icon").classList.add("active");
+        document.querySelector(".likes__field").classList.add("active");
       }
       else{
+        document.querySelector(".likes__field").classList.remove("active");
         document.querySelector(".likes__icon").classList.remove("active");
       }
     }
 
     renderLikes(likesArray) {
-      this.toggleLikesIcon(likesArray);
+      this.toggleLikesBtn(likesArray);
       LikesPanel.renderLikes(likesArray);
     }
 
