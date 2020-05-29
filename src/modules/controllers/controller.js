@@ -59,7 +59,7 @@ export const searchController = async (query) => {
             if(error.message === "해당 음식 정보가 없습니다.") {
                 // alert(error.message);
                 // Alert.setState({visible: true, message: "해당 음식 정보가 없습니다.", color: "red"});
-                Alerts.createAlert();
+                Alerts.renderAlert({message : error.message, color: "red"});
                 // Nav.element.innerHTML = temp;
             }
             else throw error;

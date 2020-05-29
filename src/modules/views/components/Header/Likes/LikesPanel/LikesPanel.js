@@ -1,3 +1,5 @@
+import {Image} from "../../../../views.js";
+
 class $LikesPanel {
     constructor() {
         this.element = document.createElement("div");
@@ -6,12 +8,7 @@ class $LikesPanel {
         this.ul.className = "likes__list";
         this.element.appendChild(this.ul);
 
-        // this.markup = `
-        // <div class="likes__panel">
-        //   <ul class="likes__list">
-
-        //     <!-- 임시 -->
-            
+        // 임시
         //       <li>
         //           <a class="likes__link" href="#47746">
         //               <figure class="likes__fig">
@@ -23,12 +20,6 @@ class $LikesPanel {
         //               </div>
         //           </a>
         //       </li>
-                      
-        //   </ul>
-        // </div>
-        // `;
-        
-        // this.renderLikes();
     }
 
     renderLikes (likesArray) {
@@ -61,24 +52,28 @@ class $Like {
     }
 
     createLike(like) {
-        const $li = document.createElement("li");
-        $li.insertAdjacentHTML("afterbegin", this.markUp(like));
-        // this.likes.push($li);
-        return $li;
-    }
+        const a = document.createElement("a");
+        a.href = `#${like.recipe_id}`;
+        a.className = "likes__link";
 
-    markUp ({image_url, publisher, recipe_id, title}) {
-        return `
-            <a class="likes__link" href="#${recipe_id}">
-                <figure class="likes__fig">
-                    <img src="${image_url}" alt="${title}">
-                </figure>
-                <div class="likes__data">
-                    <h4 class="likes__name">${title}</h4>
-                    <p class="likes__author">${publisher}</p>
-                </div>
-            </a>
-        `;
+        const figure  = document.createElement("figure");
+        figure.className = "likes__fig";
+
+        const img = new Image(like.image_url, like.title);
+        img.render(figure);
+
+        a.insertAdjacentElement("afterbegin", figure);
+        a.insertAdjacentHTML("beforeend", `
+            <div class="likes__data">
+                <h4 class="likes__name">${like.title}</h4>
+                <p class="likes__author">${like.publisher}</p>
+            </div>
+        `);
+
+        const $li = document.createElement("li");
+        $li.insertAdjacentElement("afterbegin", a);
+
+        return $li;
     }
 }
 

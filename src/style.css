@@ -201,19 +201,41 @@ h5 {
 .alert {
   position: fixed;
   top: 0rem;
-  /* background-color: black; */
-  /* width: 100px;
-  height: 100px; */
-  /* top: -5rem;
-  left: 0rem;
-  width: 20rem;
-  height: 8rem;
-  background-color: #fff;
-  transition: all 0.1s ease-in-out; */
+  z-index: 10;
 }
-/* .alert.active {
-  transform: translateY(5rem);
-} */
+.alert__item {
+  height: 5.6rem;
+  width: auto;
+  margin-bottom: 0.7rem;
+  padding-top: 1rem;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+}
+.alert__item.end{
+  height: 0rem !important;
+  padding-top: 0rem !important;
+}
+.alert__item.red {
+  background-color: #fe5353; 
+}
+.alert__item-message {
+  display: block;
+  color: white;
+  font-size: 1.8rem;
+  margin: 0rem 4rem;
+}
+.alert__item-timebar {
+  height: 0.8rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+.alert__item-timebar.red {
+  background-color: #f6a0a0;
+}
+
+.alert__item-timebar.start{
+  width: 0rem !important;
+}
 
 .search {
   background-color: #fff;
