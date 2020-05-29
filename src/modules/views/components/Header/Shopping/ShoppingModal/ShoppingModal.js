@@ -1,3 +1,4 @@
+import {Alerts} from "../../../../views.js"
 import {ShoppingList} from "./ShoppingList/ShoppingList.js";
 
 class $ShoppingModal {
@@ -77,6 +78,10 @@ class $ShoppingModal {
             this.modal.classList.toggle("visible", false);
         }
     }
+    
+    copy () {
+        
+    }
 
     addEvent(){
         this.element.addEventListener("click", (e) => {
@@ -106,9 +111,12 @@ class $ShoppingModal {
                 tempEl.select();
                 document.execCommand("copy");
                 document.body.removeChild(tempEl);
+
+                Alerts.renderAlert("복사되었습니다.", "green");
             }
 
         })
+        
 
         function handleEscapeKey (e) {
             if(e.keyCode === 27 && this.data.visible){

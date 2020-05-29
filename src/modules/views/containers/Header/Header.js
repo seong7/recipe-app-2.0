@@ -1,4 +1,4 @@
-import { SearchForm, Likes, Shopping } from "../../views.js";
+import { SearchForm, Likes, Shopping, Alerts } from "../../views.js";
 import state from "../../../state/state.js";
 
 class $Header {
@@ -47,6 +47,8 @@ class $Header {
 
         Shopping.closeModal();
         this.toggleShoppingBtn();
+
+        Alerts.renderAlert("쇼핑리스트가 비워졌습니다.", "green");
     }
 
     // shopping delete 버튼

@@ -201,22 +201,35 @@ h5 {
 .alert {
   position: fixed;
   top: 0rem;
-  z-index: 10;
+  z-index: 12;
+  margin-left: 1rem;
 }
 .alert__item {
-  height: 5.6rem;
-  width: auto;
+  height: 0rem;
+  width: 33rem;
   margin-bottom: 0.7rem;
   padding-top: 1rem;
-  transition: all 0.5s ease-in-out;
   overflow: hidden;
+  box-shadow: 0 1.7rem 2rem rgba(101, 90, 86, 0.78)
+}
+.alert__item.start {
+  height: 5.6rem;
 }
 .alert__item.end{
-  height: 0rem !important;
-  padding-top: 0rem !important;
+  height: 0rem;
+  padding-top: 0rem;
 }
 .alert__item.red {
   background-color: #fe5353; 
+}
+.alert__item-timebar.red {
+  background-color: #f6a0a0;
+}
+.alert__item.green {
+  background-color: #4750ff;; 
+}
+.alert__item-timebar.green {
+  background-color: rgb(175, 183, 255);
 }
 .alert__item-message {
   display: block;
@@ -229,13 +242,10 @@ h5 {
   width: 100%;
   margin-top: 1rem;
 }
-.alert__item-timebar.red {
-  background-color: #f6a0a0;
-}
-
 .alert__item-timebar.start{
   width: 0rem !important;
 }
+
 
 .search {
   background-color: #fff;

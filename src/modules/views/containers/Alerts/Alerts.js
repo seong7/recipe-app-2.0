@@ -11,11 +11,16 @@ class $Alerts {
         this.element.className = "alert";
     }
 
-    renderAlert (data) {
+    renderAlert (message, color) {
         this.data = {
             ...this.data,
-            ...data,
+            message,
+            color,
         }
+        // console.log(message);
+        // console.log(color);
+        // console.log(this.data);
+
         const Alert = new $Alert(this.data);
         Alert.render(this.element);
     }
@@ -28,13 +33,13 @@ class $Alerts {
 
 class $Alert {
     data = {
-        transition_height : 0.5,
+        time_end : 0.5,
     };
 
     constructor({message, color, time}) {
         this.element = document.createElement("div");
         this.element.className = `alert__item ${color}`
-        this.element.style.transition = `all ${this.data.transition_height}s`;
+        this.element.style.transition = `all ${this.data.time_end}s`;
 
         const span = document.createElement("span");
         span.className = "alert__item-message";
@@ -67,10 +72,11 @@ class $Alert {
         const asyncWork = async () => {
             $target.insertAdjacentElement("afterbegin", this.element);
             await timeout(10);
+            this.element.classList.add("start");
             this.timebar.classList.add("start");
             await timeout(this.data.time);
             this.element.classList.add("end");
-            await timeout(this.data.transition_height * 1000);
+            await timeout(this.data.time_end * 1000);
             this.remove()
         }
 

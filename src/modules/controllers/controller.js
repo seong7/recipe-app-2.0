@@ -59,7 +59,7 @@ export const searchController = async (query) => {
             if(error.message === "해당 음식 정보가 없습니다.") {
                 // alert(error.message);
                 // Alert.setState({visible: true, message: "해당 음식 정보가 없습니다.", color: "red"});
-                Alerts.renderAlert({message : error.message, color: "red"});
+                Alerts.renderAlert(error.message, "red");
                 // Nav.element.innerHTML = temp;
             }
             else throw error;
@@ -138,10 +138,12 @@ export const shoppingController = () => {
     const recipe = state.get("recipe");
 
     const Header = view.Header;
+    const Alerts = view.Alerts
     // console.log(recipe);
     recipe.result.ingredients.forEach((ing) => {
         shopping.addItem(ing.count, ing.unit, ing.ingredient);
         Header.toggleShoppingBtn();
     })
+    Alerts.renderAlert("쇼핑리스트에 저장되었습니다.", "green");
     // console.log(shopping);
 }
