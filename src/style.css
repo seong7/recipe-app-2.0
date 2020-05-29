@@ -11,12 +11,13 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
+  /* font-size: 62.5%; */
+  font-size: 54%;
 }
 
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 1200px) {
   html {
-      font-size: 54%;
+    font-size: 46%;
   }
 }
 
@@ -150,7 +151,7 @@ body {
 
 #App {
   margin: 0em auto;
-  max-width: 1500px;
+  max-width: 1200px;
   /* margin: 4vw auto; */
   background-color: #fff;
   border-radius: 6px;
@@ -159,11 +160,12 @@ body {
 
   /* GRID 설정 부분 !!!! */
   display: grid;
-  grid-template-rows: 10rem minmax(100rem, auto); /* 위에서부터 각 행에 대한 높이 정함*/
+  grid-template-rows: 10rem minmax(100rem, auto) 8rem; /* 위에서부터 각 행에 대한 높이 정함*/
   grid-template-columns: 1.1fr 2fr; /* 왼쪽부터 각 열에대한 비율 정함 (고정값주면 고정됨, fr 은 비율) */
   grid-template-areas:  /* 행 열을 맞춰서 작성 */
     "head head"
-    "results recipe";
+    "results recipe"
+    "footer footer";
 
   /* position: relative; */
 }
@@ -210,23 +212,23 @@ h5 {
   margin-bottom: 0.7rem;
   padding-top: 1rem;
   overflow: hidden;
-  box-shadow: 0 1.7rem 2rem rgba(101, 90, 86, 0.78)
+  box-shadow: 0 1.7rem 2rem rgba(101, 90, 86, 0.78);
 }
 .alert__item.start {
   height: 5.6rem;
 }
-.alert__item.end{
+.alert__item.end {
   height: 0rem;
   padding-top: 0rem;
 }
 .alert__item.red {
-  background-color: #fe5353; 
+  background-color: #fe5353;
 }
 .alert__item-timebar.red {
   background-color: #f6a0a0;
 }
 .alert__item.green {
-  background-color: #4750ff;; 
+  background-color: #4750ff;
 }
 .alert__item-timebar.green {
   background-color: rgb(175, 183, 255);
@@ -242,10 +244,9 @@ h5 {
   width: 100%;
   margin-top: 1rem;
 }
-.alert__item-timebar.start{
+.alert__item-timebar.start {
   width: 0rem !important;
 }
-
 
 .search {
   background-color: #fff;
@@ -276,8 +277,8 @@ h5 {
   font-weight: bold;
 }
 
-.header__btns{
-  display : flex;
+.header__btns {
+  display: flex;
   width: 200px;
   justify-content: space-evenly;
 }
@@ -294,11 +295,11 @@ h5 {
   border: none;
   outline: none;
 }
-.shopping__btn.active{
+.shopping__btn.active {
   color: #f9677a;
   cursor: pointer;
 }
-.shopping__modal-wrapper{
+.shopping__modal-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -319,8 +320,8 @@ h5 {
   overflow: hidden;
   border-radius: 10px;
 }
-.shopping__modal-content.visible{
-  height : 600px !important;
+.shopping__modal-content.visible {
+  height: 600px !important;
   padding: 3rem 3rem;
   display: flex;
   flex-direction: column;
@@ -331,11 +332,11 @@ h5 {
   justify-self: center;
   width: 100%;
 }
-.shopping__modal-btns{
+.shopping__modal-btns {
   display: flex;
   justify-content: center;
 }
-.shopping__modal-btns > .btn-short:first-child{
+.shopping__modal-btns > .btn-short:first-child {
   margin-left: 0px;
 }
 .heading-2 {
@@ -352,7 +353,8 @@ h5 {
 .shopping__clear {
   background-image: linear-gradient(to right bottom, #febdb8, #f85f55);
 }
-.shopping__copy, .shopping__clear {
+.shopping__copy,
+.shopping__clear {
   height: 3rem;
   border-radius: 5px;
 }
@@ -386,8 +388,8 @@ h5 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 1.3rem 0;
   border-bottom: 1.5px solid #ffbdbbb8;
   position: relative;
@@ -395,8 +397,8 @@ h5 {
 }
 .shopping__count {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 10rem;
-          flex: 0 0 10rem;
+  -ms-flex: 0 0 10rem;
+  flex: 0 0 10rem;
   padding: 0.4rem 0.5rem;
   border: 1px solid #f2efee;
   border-radius: 3px;
@@ -405,8 +407,8 @@ h5 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 .shopping__count input {
   color: inherit;
@@ -430,8 +432,8 @@ h5 {
 
 .shopping__description {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   margin-top: 0.4rem;
   margin-right: 1.5rem;
 }
@@ -447,16 +449,15 @@ h5 {
   transition: all 0.3s;
   transform: translateX(100px);
 }
-.shopping__delete svg{
+.shopping__delete svg {
   height: 2.5rem;
-    width: 2.5rem;
+  width: 2.5rem;
 }
 
 .shopping__item:hover .shopping__delete {
   visibility: visible;
   transform: translateX(0px);
 }
-
 
 .hidden {
   display: none !important;
@@ -469,7 +470,7 @@ h5 {
   /* width: 100px; */
   display: inline-block;
 }
-.likes__field{
+.likes__field {
   margin-left: 4rem;
   display: inline-block;
   align-items: center;
@@ -522,7 +523,7 @@ h5 {
   padding: 3rem 0;
   /* min-width: 227.65px; */
 }
-.results__list{
+.results__list {
   margin-bottom: 3rem;
 }
 .results__list,
@@ -551,7 +552,7 @@ h5 {
 }
 .results__fig,
 .likes__fig {
-  flex: 0 0 5.5rem;   /* flex-grow, flex-shrink, flex-basis */
+  flex: 0 0 5.5rem; /* flex-grow, flex-shrink, flex-basis */
   border-radius: 50%;
   overflow: hidden;
   height: 5.5rem;
@@ -571,7 +572,7 @@ h5 {
   background-image: linear-gradient(to right bottom, #f9fb89, #f48982);
   opacity: 0.4;
 }
-.results__fig img{
+.results__fig img {
   display: block;
   width: 100%;
   height: 100%;
@@ -615,23 +616,23 @@ h5 {
   display: table;
   clear: both;
 }
-.results__btn--prev,
-.likes__btn--prev {
+.results__btn--prev {
   border: 1px solid #ffc29a;
   float: left;
   flex-direction: row-reverse;
+  margin-left: 2rem;
 }
-.results__btn--next,
-.likes__btn--next {
+.results__btn--next {
   border: 1px solid #ffc29a;
   float: right;
+  margin-right: 2rem;
 }
 
 .loader {
   margin: 20rem auto;
   text-align: center;
 }
-.loader.large{
+.loader.large {
   margin: 0;
   padding: 15rem;
   position: absolute;
@@ -654,7 +655,7 @@ h5 {
   display: flex;
   margin: 0;
 }
-.loader.nav svg{
+.loader.nav svg {
   margin: auto;
   height: 4rem;
   width: 4rem;
@@ -871,4 +872,39 @@ h5 {
 }
 .recipe__by {
   font-weight: 700;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #f2efee;
+  padding: 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.copyright {
+  color: #968b87;
+  font-size: 1.2rem;
+  margin-top: auto;
+}
+.link:link,
+.link:visited {
+  color: #968b87;
+}
+.link__info-wrapper {
+  font-size: 2.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.link__info:nth-of-type(2) {
+  margin-left: 5rem;
+  font-size: 1.5rem;
+  line-height: 4rem;
+}
+.link__info:link,
+.link__info:visited {
+  color: #514f4e;
+  text-decoration: none;
 }

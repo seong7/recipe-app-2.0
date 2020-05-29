@@ -10,4 +10,5 @@ export * from "./components/Image/Image.js"
 export * from "./containers/Header/Header.js";
 export * from "./containers/Nav/Nav.js";
 export * from "./containers/Main/Main.js";
+export * from "./containers/Footer/Footer.js";
 export * from "./containers/Alerts/Alerts.js";

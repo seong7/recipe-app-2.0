@@ -15,12 +15,13 @@ export const initController = () => {
     const Header = view.Header;
     const Nav = view.Nav;
     const Main = view.Main;
+    const Footer = view.Footer;
     const Alerts = view.Alerts;
 
     Header.render(document.querySelector("#App"));
     Nav.render(document.querySelector("#App"));
     Main.render(document.querySelector("#App"));
-    // Footer.render(document.querySelector("#App"));
+    Footer.render(document.querySelector("#App"));
     Alerts.initRender(document.querySelector("#App"));
     
     if(localStorage["lastSearch"] && localStorage["lastId"]){
