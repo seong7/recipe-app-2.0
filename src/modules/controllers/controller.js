@@ -1,6 +1,6 @@
 import state from "../state/state.js";
 import * as view from "../views/views.js";
-import {SearchModel, RecipeModel, LikesModel, ShoppingModel} from "../models/models.js";
+import {RecipeModel, SearchModel, LikesModel, ShoppingModel} from "../models/models.js";
 
 // 작업용
 // window.state = state;
