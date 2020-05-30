@@ -9,7 +9,7 @@ class $Header {
       "afterbegin",
       `
       <div class="header__logo-wrapper">
-        <img src="./src/images/logo.png" alt="Logo" class="header__logo" />
+        <img src="images/logo.png" alt="Logo" class="header__logo" />
         <span>v 2.0</span>
       </div>
       `

@@ -58,6 +58,8 @@ class $Alert {
 
         this.element.append(span);
         this.element.append(timebar);
+
+        this.addEvent();
     }
 
     render($target) {
@@ -71,7 +73,7 @@ class $Alert {
         
         const asyncWork = async () => {
             $target.insertAdjacentElement("afterbegin", this.element);
-            await timeout(10);
+            await timeout(100);  // 너무 짧게 주면 거의 동기적으로 동작하게 되는 버그 발생
             this.element.classList.add("start");
             this.timebar.classList.add("start");
             await timeout(this.data.time);
@@ -85,6 +87,12 @@ class $Alert {
 
     remove() {
         this.element.remove();
+    }
+
+    addEvent() {
+        this.element.addEventListener("click", () => {
+            this.element.classList.add("end");
+        })
     }
 }
 

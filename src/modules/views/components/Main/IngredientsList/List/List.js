@@ -5,7 +5,7 @@ class $List {
         return `
             <li class="recipe__item">
                 <svg class="recipe__icon">
-                    <use href="./src/images/icons.svg#icon-check"></use>
+                    <use href="images/icons.svg#icon-check"></use>
                 </svg>
                 <div class="recipe__count">${this.formatCount(ingredient.count)}</div>
                 <div class="recipe__ingredient">

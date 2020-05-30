@@ -37,7 +37,7 @@ class $Main {
             <div class="recipe__details">
                 <div class="recipe__info">
                     <svg class="recipe__info-icon">
-                        <use href="./src/images/icons.svg#icon-stopwatch"></use>
+                        <use href="images/icons.svg#icon-stopwatch"></use>
                     </svg>
                     <span class="recipe__info-data recipe__info-data--minutes">${
                       recipe.time
@@ -46,7 +46,7 @@ class $Main {
                 </div>
                 <div class="recipe__info">
                     <svg class="recipe__info-icon">
-                        <use href="./src/images/icons.svg#icon-man"></use>
+                        <use href="images/icons.svg#icon-man"></use>
                     </svg>
                     <span class="recipe__info-data recipe__info-data--people">${
                       recipe.servings
@@ -56,12 +56,12 @@ class $Main {
                     <div class="recipe__info-buttons">
                         <button class="btn-tiny btn-decrease">
                             <svg>
-                                <use href="./src/images/icons.svg#icon-circle-with-minus"></use>
+                                <use href="images/icons.svg#icon-circle-with-minus"></use>
                             </svg>
                         </button>
                         <button class="btn-tiny btn-increase">
                             <svg>
-                                <use href="./src/images/icons.svg#icon-circle-with-plus"></use>
+                                <use href="images/icons.svg#icon-circle-with-plus"></use>
                             </svg>
                         </button>
                     </div>
@@ -69,7 +69,7 @@ class $Main {
                 </div>
                 ${/*<button class="recipe__love">
                     <svg class="header__likes">
-                        <use href="./src/images/icons.svg#icon-heart${
+                        <use href="images/icons.svg#icon-heart${
                            isLiked ? "" : "-outlined"
                         }"></use>
                     </svg>
@@ -84,7 +84,7 @@ class $Main {
                 </ul>*/`<!-- recipe ul -->`}
                 <button class="btn-small recipe__btn recipe__btn--add">
                     <svg class="search__icon">
-                        <use href="./src/images/icons.svg#icon-shopping-cart"></use>
+                        <use href="images/icons.svg#icon-shopping-cart"></use>
                     </svg>
                     <span>Add to shopping list</span>
                 </button>
@@ -103,7 +103,7 @@ class $Main {
                 }" target="_blank"> 
                     <span>Directions</span>
                     <svg class="search__icon">
-                        <use href="./src/images/icons.svg#icon-triangle-right"></use>
+                        <use href="images/icons.svg#icon-triangle-right"></use>
                     </svg>
 
                 </a>

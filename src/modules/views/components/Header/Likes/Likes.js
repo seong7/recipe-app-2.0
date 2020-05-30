@@ -7,7 +7,7 @@ class $Likes {
       this.element.insertAdjacentHTML("afterbegin", `
         <div class="likes__field likes__hover">
           <svg class="likes__icon">
-            <use href="./src/images/icons.svg#icon-heart"></use>
+            <use href="images/icons.svg#icon-heart"></use>
           </svg>
         </div>
       `)

@@ -31,7 +31,7 @@ class $PageBtn {
              data-goto=${type === "prev" ? page - 1 : page + 1}>
              <span>Page ${type === "prev" ? page - 1 : page + 1}</span>
              <svg class="search__icon">
-                <use href="./src/images/icons.svg#icon-triangle-${
+                <use href="images/icons.svg#icon-triangle-${
                   type === "prev" ? "left" : "right"
                 }"></use>
              </svg>

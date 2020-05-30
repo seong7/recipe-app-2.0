@@ -34,7 +34,7 @@ class $ShoppingList {
                 <p class="shopping__description">${item.ingredient}</p>
                 <button class="shopping__delete btn-tiny">
                     <svg>
-                        <use href="./src/images/icons.svg#icon-circle-with-cross"></use>
+                        <use href="images/icons.svg#icon-circle-with-cross"></use>
                     </svg>
                 </button>
             </li>

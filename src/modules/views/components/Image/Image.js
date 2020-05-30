@@ -10,7 +10,7 @@ export class Image {
         loader.className = "loader nav";
         loader.insertAdjacentHTML("afterbegin", `
             <svg>
-                <use href="./src/images/icons.svg#icon-loader"></use>
+                <use href="images/icons.svg#icon-loader"></use>
             </svg>
         `)
         this.loader = loader;

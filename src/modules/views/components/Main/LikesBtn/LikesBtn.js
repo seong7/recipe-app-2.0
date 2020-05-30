@@ -26,7 +26,7 @@ class $LikesBtn {
         this.element.insertAdjacentHTML("afterbegin", `
             <button class="recipe__love">
                 <svg class="header__likes">
-                    <use href="./src/images/icons.svg#icon-heart${
+                    <use href="images/icons.svg#icon-heart${
                         this.isLiked ? "" : "-outlined"
                     }"></use>
                 </svg>

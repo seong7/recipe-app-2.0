@@ -11,7 +11,7 @@ class $SearchForm {
       `
       <button class="btn search__btn">
         <svg class="search__icon">
-          <use href="./src/images/icons.svg#icon-magnifying-glass"></use>
+          <use href="images/icons.svg#icon-magnifying-glass"></use>
         </svg>
         <span>Search</span>
       </button>
