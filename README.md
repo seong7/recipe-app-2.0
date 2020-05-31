@@ -1,14 +1,24 @@
-# Recipe App 
-ver 2.0
+# Recipe App _v 2.0_   
+API 를 활용한 레시피 정보 Web app   
 
-### Memo
 
-#### Event target 으로 DOM 에 접근하는 method
- 1. event.target.matches (".class *")   
-   : 지정한 선택자와 일치하는지 확인
+ ![recipeapp](https://user-images.githubusercontent.com/52827441/83347409-dfca0200-a35f-11ea-90fc-febec921b520.gif)
 
- 2. event.target.closest (".class ")
-   : target 에서 가장 가까운 선택자의 요소 지정
 
- 3. event.target.classList.contains("class")
-   : target 의 class 명으로 접근하는 법 ("." 사용하지 않음)
+## 주요기능
+ - AJAX 비동기 통신
+ - 반응형 UI
+ - 이미지 개별 pre-loader
+ - Alert UI
+
+## v 2.0 업데이트
+[[v 1.0 repo 로 이동](https://github.com/seong7/recipe-app)]   
+ - UI 개선
+ - Code Structure 개선 (React app 의 directory 구조를 모방)
+ - Jest 를 사용한 TDD 시행 (일부) [>>](./src/__tests__)   
+
+## 사용된 기술
+ - Javascript Vanilla (Module)
+ - Babel
+ - Webpack
+ - Jest
