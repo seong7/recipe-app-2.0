@@ -1,6 +1,6 @@
 # Recipe App _v 2.0_   
 
- ![recipeapp](https://user-images.githubusercontent.com/52827441/83347409-dfca0200-a35f-11ea-90fc-febec921b520.gif)
+![recipe2](https://user-images.githubusercontent.com/52827441/83368329-5fed7780-a3f3-11ea-9a59-06343d8edf05.gif)
  
 API 를 활용한 레시피 정보 Web app   
 
