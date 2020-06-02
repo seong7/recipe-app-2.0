@@ -15,7 +15,7 @@ API 를 활용한 레시피 정보 Web app
  - class 를 사용한 Component 관리 [>>](./src/modules/views)
  - Jest 를 사용한 TDD 방법론 적용 (일부) [>>](./src/__tests__)   
 
-## 개발 기술
+## 기술 스택
  - Javascript Vanilla (Module)
  - HTML / CSS
  - Babel / Webpack / Jest
