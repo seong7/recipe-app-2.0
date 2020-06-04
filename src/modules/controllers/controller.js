@@ -32,9 +32,8 @@ export const initController = () => {
     document.location.hash = localStorage.getItem("lastId");
 
     (async function (){
-        searchController(localStorage.getItem("lastSearch"));
+        await searchController(localStorage.getItem("lastSearch"));
         await recipeController(); 
-        likeController();
     
         // hashchange 이벤트로 recipe controller 동작
         // 현재 앱에서 a tag 들을 클릭하면 # 값 변함
@@ -106,7 +105,6 @@ export const likeController = () => {
 export const recipeController = async () => {
     const rId = window.location.hash.replace("#", "");
     // console.log("recipeController")
-    console.log("rId :", rId);
 
     const Main = view.Main;
     const Loader = view.Loader;
