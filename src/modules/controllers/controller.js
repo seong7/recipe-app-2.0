@@ -3,7 +3,7 @@ import * as view from "../views/views.js";
 import {SearchModel, RecipeModel, LikesModel, ShoppingModel} from "../models/models.js";
 
 // 작업용
-// window.state = state;
+window.state = state;
 
 // 최초 init controller
 export const initController = () => {
@@ -24,20 +24,25 @@ export const initController = () => {
     Footer.render(document.querySelector("#App"));
     Alerts.initRender(document.querySelector("#App"));
     
-    if(localStorage["lastSearch"] && localStorage["lastId"]){
-        searchController(localStorage.getItem("lastSearch"));
-        recipeController(localStorage.getItem("lastId"));
-    
-        // url 의 hash 값 초기화
-        document.location.hash = localStorage.getItem("lastId");
-    }else{
-        document.location.hash = "";
+    if(!localStorage["lastSearch"] && !localStorage["lastId"]){
+        localStorage.setItem("lastSearch", "pizza");
+        localStorage.setItem("lastId", "6fab1c");
     }
-    likeController();
+    // url 의 hash 값 초기화
+    document.location.hash = localStorage.getItem("lastId");
 
-    // hashchange 이벤트로 recipe controller 동작
-    // 현재 앱에서 a tag 들을 클릭하면 # 값 변함
-    window.addEventListener("hashchange", recipeController);
+    (async function (){
+        searchController(localStorage.getItem("lastSearch"));
+        await recipeController(); 
+        likeController();
+    
+        // hashchange 이벤트로 recipe controller 동작
+        // 현재 앱에서 a tag 들을 클릭하면 # 값 변함
+        window.addEventListener("hashchange", recipeController);
+        
+        // recipe render 와 동시에 hashchange event 가 동작하는 것 방지하기 위해
+        // IFFE 형태의 async function 으로 작성
+    })();
 }
 
 // Search 기능 controller
@@ -101,6 +106,7 @@ export const likeController = () => {
 export const recipeController = async () => {
     const rId = window.location.hash.replace("#", "");
     // console.log("recipeController")
+    console.log("rId :", rId);
 
     const Main = view.Main;
     const Loader = view.Loader;

@@ -110,7 +110,10 @@ class $Main {
             </div>
         `;
 
+        console.log(this.element.childNodes[0].outerText);
         this.element.insertAdjacentElement("afterbegin", this.createImageFigure(recipe.image_url, recipe.title, recipe.title));
+        console.log(this.element.childNodes[0].outerText);
+        // console.log(this.element.childNodes);
         this.element.insertAdjacentHTML("beforeend", markup);
         LikesBtn.render(document.querySelector(".recipe__details"), isLiked);
         IngredientsList.render(document.querySelector(".recipe__ingredients"), recipe.ingredients);
