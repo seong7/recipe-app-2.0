@@ -3,7 +3,7 @@ import * as view from "../views/views.js";
 import {SearchModel, RecipeModel, LikesModel, ShoppingModel} from "../models/models.js";
 
 // 작업용
-window.state = state;
+// window.state = state;
 
 // 최초 init controller
 export const initController = () => {
