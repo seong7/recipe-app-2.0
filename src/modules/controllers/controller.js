@@ -65,25 +65,29 @@ export const initController = () => {
 };
 
 // Search 기능 controller
+/**
+ *
+ * @param {string} query query to search
+ */
 export const searchController = async (query) => {
   const Nav = View.Nav;
   const Loader = View.Loader;
-  const Alerts = View.Alerts;
+
   // const temp = Nav.element.innerHTML;
 
   if (query) {
     Loader.render(Nav.element, "nav");
-    const search = state.get("search");
+    const searchModel = state.get("search");
 
     try {
-      await search.getResults(fetch, query);
-      Nav.renderList(search.result);
+      await searchModel.getResults(fetch, query);
+      Nav.renderList(searchModel.result);
       localStorage.setItem("lastSearch", query);
     } catch (error) {
       if (error.message === "해당 음식 정보가 없습니다.") {
         // alert(error.message);
         // Alert.setState({visible: true, message: "해당 음식 정보가 없습니다.", color: "red"});
-        Alerts.renderAlert(error.message, "red");
+        alerts.renderAlert(error.message, "red");
         // Nav.element.innerHTML = temp;
       } else throw error;
     } finally {
@@ -103,9 +107,9 @@ export const likeController = () => {
 
   const likes = header.likes;
   const likesModel = state.get("likes");
-  const recipe = state.get("recipe");
-  if (recipe.result) {
-    const { recipe_id, title, publisher, image_url } = recipe.result;
+  const recipeModel = state.get("recipe");
+  if (recipeModel.result) {
+    const { recipe_id, title, publisher, image_url } = recipeModel.result;
     if (!likesModel.isLiked(recipe_id)) {
       likesModel.addLike(recipe_id, title, publisher, image_url);
     } else {
@@ -126,20 +130,20 @@ export const recipeController = async () => {
   const Main = View.Main;
   const Loader = View.Loader;
   const ResultList = View.ResultList;
-  const recipe = state.get("recipe");
-  const likes = state.get("likes");
+  const recipeModel = state.get("recipe");
+  const likesModel = state.get("likes");
 
   if (rId) {
     Main.clear();
     Loader.render(Main.element, "main");
     try {
-      await recipe.getRecipe(fetch, rId);
+      await recipeModel.getRecipe(fetch, rId);
       // console.log(res);
-      recipe.parseIngredients();
-      recipe.calcTime();
-      recipe.calcServings();
+      recipeModel.parseIngredients();
+      recipeModel.calcTime();
+      recipeModel.calcServings();
 
-      Main.renderRecipe(recipe.result, likes.isLiked(rId));
+      Main.renderRecipe(recipeModel.result, likesModel.isLiked(rId));
 
       ResultList.hightlightSelected(rId);
       localStorage.setItem("lastId", rId);
@@ -154,13 +158,13 @@ export const recipeController = async () => {
 
 // shopping 기능 controller
 export const shoppingController = () => {
-  const shopping = state.get("shopping");
-  const recipe = state.get("recipe");
+  const shoppingModel = state.get("shopping");
+  const recipeModel = state.get("recipe");
 
   // const Alerts = View.Alerts;
   // console.log(recipe);
-  recipe.result.ingredients.forEach((ing) => {
-    shopping.addItem(ing.count, ing.unit, ing.ingredient);
+  recipeModel.result.ingredients.forEach((ing) => {
+    shoppingModel.addItem(ing.count, ing.unit, ing.ingredient);
     header.toggleShoppingBtn();
   });
   alerts.renderAlert("쇼핑리스트에 저장되었습니다.", "green");

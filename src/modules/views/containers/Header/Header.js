@@ -8,11 +8,13 @@ class Header {
    * @param {Alerts} alerts
    */
   constructor(shoppingModel, likesModel, alerts) {
-    this.likes = new Likes();
     this.likesModel = likesModel;
-    this.shopping = new Shopping(alerts);
     this.shoppingModel = shoppingModel;
     this.alerts = alerts;
+
+    this.likes = new Likes();
+    this.shopping = new Shopping(this.alerts);
+    this.searchForm = new SearchForm();
 
     this.element = document.createElement("header");
     this.element.className = "header";
@@ -26,7 +28,7 @@ class Header {
       `
     );
 
-    this.element.appendChild(SearchForm.element);
+    this.element.appendChild(this.searchForm.element);
     this.element.appendChild(this.createHeaderBtns());
     this.addEvent();
   }
