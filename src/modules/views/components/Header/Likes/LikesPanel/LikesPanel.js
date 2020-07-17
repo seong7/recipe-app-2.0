@@ -1,7 +1,9 @@
 import { Image } from "../../../..";
 
-class $LikesPanel {
+class LikesPanel {
   constructor() {
+    this.like = new Like();
+
     this.element = document.createElement("div");
     this.element.className = "likes__panel";
     this.ul = document.createElement("ul");
@@ -22,16 +24,23 @@ class $LikesPanel {
     //       </li>
   }
 
+  /**
+   *
+   * @param {Array} likesArray
+   */
   renderLikes(likesArray) {
     this.ul.innerHTML = "";
 
-    const Like = new $Like();
     likesArray.forEach((like) => {
-      Like.renderLike(this.ul, like);
+      this.like.renderLike(this.ul, like);
     });
     this.blinkLikesPanel(likesArray.length);
   }
 
+  /**
+   *
+   * @param {number} numOfLikes
+   */
   blinkLikesPanel(numOfLikes) {
     if (numOfLikes > 0) {
       this.element.style.opacity = 1;
@@ -44,15 +53,22 @@ class $LikesPanel {
   }
 }
 
-class $Like {
+class Like {
   constructor() {
     this.likes = [];
   }
 
-  renderLike($target, like) {
-    $target.appendChild(this.createLike(like));
+  /**
+   * @param {HTMLElement} target
+   * @param {Object} like
+   */
+  renderLike(target, like) {
+    target.appendChild(this.createLike(like));
   }
 
+  /**
+   * @param {Object} like
+   */
   createLike(like) {
     const a = document.createElement("a");
     a.href = `#${like.recipe_id}`;
@@ -75,11 +91,11 @@ class $Like {
         `
     );
 
-    const $li = document.createElement("li");
-    $li.insertAdjacentElement("afterbegin", a);
+    const li = document.createElement("li");
+    li.insertAdjacentElement("afterbegin", a);
 
-    return $li;
+    return li;
   }
 }
 
-export const LikesPanel = new $LikesPanel();
+export default LikesPanel;

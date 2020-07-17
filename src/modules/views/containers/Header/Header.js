@@ -1,11 +1,15 @@
 import { SearchForm, Likes, Shopping } from "../..";
+import { LikesModel, ShoppingModel } from "../../../models/models";
 
 class Header {
   /**
    * @param {ShoppingModel} shoppingModel
+   * @param {LikesModel} likesModel
    * @param {Alerts} alerts
    */
-  constructor(shoppingModel, alerts) {
+  constructor(shoppingModel, likesModel, alerts) {
+    this.likes = new Likes();
+    this.likesModel = likesModel;
     this.shopping = new Shopping(alerts);
     this.shoppingModel = shoppingModel;
     this.alerts = alerts;
@@ -31,7 +35,7 @@ class Header {
     const header__btns = document.createElement("div");
     header__btns.className = "header__btns";
     header__btns.appendChild(this.shopping.element);
-    header__btns.appendChild(Likes.element);
+    header__btns.appendChild(this.likes.element);
     return header__btns;
   }
 
@@ -40,10 +44,11 @@ class Header {
    * @param {HTMLElement} target
    */
   render(target) {
-    this.toggleShoppingBtn();
-
     // target.insertAdjacentHTML("afterbegin", this.markup);
     target.appendChild(this.element);
+
+    this.toggleShoppingBtn();
+    this.likes.renderLikes(this.likesModel.getLikes());
   }
 
   toggleShoppingBtn() {

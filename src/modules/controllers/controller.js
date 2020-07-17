@@ -33,7 +33,7 @@ export const initController = () => {
   const shopping = state.set("shopping", shoppingModel);
 
   alerts = new View.Alerts();
-  header = new View.Header(state.get("shopping"), alerts);
+  header = new View.Header(state.get("shopping"), state.get("likes"), alerts);
   Nav = View.Nav;
   Main = View.Main;
   Footer = View.Footer;
@@ -101,21 +101,21 @@ export const likeController = () => {
 
   // console.log("likeController");
 
-  const Likes = View.Likes;
-  const likes = state.get("likes");
+  const likes = header.likes;
+  const likesModel = state.get("likes");
   const recipe = state.get("recipe");
   if (recipe.result) {
     const { recipe_id, title, publisher, image_url } = recipe.result;
-    if (!likes.isLiked(recipe_id)) {
-      likes.addLike(recipe_id, title, publisher, image_url);
+    if (!likesModel.isLiked(recipe_id)) {
+      likesModel.addLike(recipe_id, title, publisher, image_url);
     } else {
-      likes.removeLike(recipe_id);
+      likesModel.removeLike(recipe_id);
       // console.log(state.likes);
     }
-    likes.persistData();
+    likesModel.persistData();
   }
 
-  Likes.renderLikes(likes.getLikes());
+  likes.renderLikes(likesModel.getLikes());
 };
 
 // Recipe 기능 controller

@@ -1,5 +1,4 @@
 export * from "./components/Header/SearchForm/SearchForm.js";
-export * from "./components/Header/Likes/Likes.js";
 
 export * from "./components/Nav/ResultList/ResultList.js";
 export * from "./components/Nav/PageBtn/PageBtn.js";
@@ -11,8 +10,9 @@ export * from "./containers/Nav/Nav.js";
 export * from "./containers/Main/Main.js";
 export * from "./containers/Footer/Footer.js";
 
+import Likes from "./components/Header/Likes/Likes.js";
 import Shopping from "./components/Header/Shopping/Shopping.js";
 import Header from "./containers/Header/Header.js";
 import Alerts from "./containers/Alerts/Alerts.js";
 
-export { Header, Shopping, Alerts };
+export { Header, Shopping, Alerts, Likes };
