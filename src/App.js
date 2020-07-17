@@ -1,12 +1,15 @@
-import {initController} from "./modules/controllers/controller.js";
+import { initController } from "./modules/controllers/controller.js";
 
 export default class App {
-    $target = null
-    dashboard = null
+  target = null;
 
-    constructor($target) {
-        this.$target = $target
+  /**
+   *
+   * @param {HTMLElement} target
+   */
+  constructor(target) {
+    this.target = target;
 
-        initController();
-    }
+    initController();
+  }
 }

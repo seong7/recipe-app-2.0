@@ -1,8 +1,10 @@
-import state from "../modules/state/state.js";
+import State from "../modules/state/state.js";
+
+const state = new State();
 
 describe("\n => State", () => {
   it("state key 배열 return", () =>
-    expect(state.keys()).toEqual([
+    expect(state.key).toEqual([
       "search",
       "recipe",
       "likes",
