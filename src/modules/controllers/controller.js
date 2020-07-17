@@ -12,8 +12,9 @@ let state;
 let header;
 let nav;
 let main;
-let Footer;
+let footer;
 let alerts;
+let loader;
 
 // 작업용
 // window.state = state;
@@ -36,12 +37,14 @@ export const initController = () => {
   header = new View.Header(state.get("shopping"), state.get("likes"), alerts);
   nav = new View.Nav(state.get("search"));
   main = new View.Main(state.get("recipe"));
-  Footer = View.Footer;
+  footer = new View.Footer();
+
+  loader = new View.Loader();
 
   header.render(document.querySelector("#App"));
   nav.render(document.querySelector("#App"));
   main.render(document.querySelector("#App"));
-  Footer.render(document.querySelector("#App"));
+  footer.render(document.querySelector("#App"));
   alerts.initRender(document.querySelector("#App"));
 
   if (!localStorage["lastSearch"] && !localStorage["lastId"]) {
@@ -70,12 +73,10 @@ export const initController = () => {
  * @param {string} query query to search
  */
 export const searchController = async (query) => {
-  const Loader = View.Loader;
-
   // const temp = Nav.element.innerHTML;
 
   if (query) {
-    Loader.render(nav.element, "nav");
+    loader.render(nav.element, "nav");
     const searchModel = state.get("search");
 
     try {
@@ -90,7 +91,7 @@ export const searchController = async (query) => {
         // nav.element.innerHTML = temp;
       } else throw error;
     } finally {
-      Loader.remove("nav");
+      loader.remove("nav");
     }
   }
 };
@@ -126,13 +127,12 @@ export const recipeController = async () => {
   const rId = window.location.hash.replace("#", "");
   // console.log("recipeController")
 
-  const Loader = View.Loader;
   const recipeModel = state.get("recipe");
   const likesModel = state.get("likes");
 
   if (rId) {
     main.clear();
-    Loader.render(main.element, "main");
+    loader.render(main.element, "main");
     try {
       await recipeModel.getRecipe(fetch, rId);
       // console.log(res);
@@ -148,7 +148,7 @@ export const recipeController = async () => {
       if (e.message === "해당 Recipe 정보가 없습니다.") alert(e.message);
       else throw e;
     } finally {
-      Loader.remove("main");
+      loader.remove("main");
     }
   }
 };
@@ -158,7 +158,6 @@ export const shoppingController = () => {
   const shoppingModel = state.get("shopping");
   const recipeModel = state.get("recipe");
 
-  // const Alerts = View.Alerts;
   // console.log(recipe);
   recipeModel.result.ingredients.forEach((ing) => {
     shoppingModel.addItem(ing.count, ing.unit, ing.ingredient);

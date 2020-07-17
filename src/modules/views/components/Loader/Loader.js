@@ -1,23 +1,36 @@
-class $Loader {
-    constructor() {
-    }
+class Loader {
+  constructor() {}
 
-    render (target, targetName) {
-        target.insertAdjacentHTML("afterbegin", `
-            <div class="${targetName}__loader loader ${targetName === "nav" ? `large`:``}">
+  /**
+   *
+   * @param {HTMLElement} target
+   * @param {string} targetName
+   */
+  render(target, targetName) {
+    target.insertAdjacentHTML(
+      "afterbegin",
+      `
+            <div class="${targetName}__loader loader ${
+        targetName === "nav" ? `large` : ``
+      }">
                 <svg>
                     <use href="images/icons.svg#icon-loader"></use>
                 </svg>
             </div>
-        `);
-    }
+        `
+    );
+  }
 
-    remove (targetName) {
-        const loader = document.querySelector(`.${targetName}__loader`);
-        if(loader){
-            loader.parentNode.removeChild(loader);
-        }
+  /**
+   *
+   * @param {string} targetName
+   */
+  remove(targetName) {
+    const loader = document.querySelector(`.${targetName}__loader`);
+    if (loader) {
+      loader.parentNode.removeChild(loader);
     }
+  }
 }
 
-export const Loader = new $Loader();
+export default Loader;
