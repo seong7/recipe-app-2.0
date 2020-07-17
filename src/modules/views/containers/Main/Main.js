@@ -1,9 +1,18 @@
-import state from "../../../state/state.js";
 import { LikesBtn, IngredientsList, Image } from "../..";
 import { shoppingController } from "../../../controllers/controller.js";
+import { RecipeModel } from "../../../models/models.js";
 
-class $Main {
-  constructor() {
+class Main {
+  /**
+   *
+   * @param {RecipeModel} recipeModel
+   */
+  constructor(recipeModel) {
+    this.recipeModel = recipeModel;
+
+    this.likesBtn = new LikesBtn();
+    this.ingredientsList = new IngredientsList();
+
     const main = document.createElement("main");
     main.className = "main recipe";
 
@@ -16,6 +25,10 @@ class $Main {
     target.appendChild(this.element);
   }
 
+  /**
+   * @param {Object} recipe
+   * @param {boolean} isLiked
+   */
   renderRecipe(recipe, isLiked) {
     //   console.log(recipe);
     const markup = `
@@ -121,13 +134,19 @@ class $Main {
       this.createImageFigure(recipe.image_url, recipe.title, recipe.title)
     );
     this.element.insertAdjacentHTML("beforeend", markup);
-    LikesBtn.render(document.querySelector(".recipe__details"), isLiked);
-    IngredientsList.render(
+    this.likesBtn.render(document.querySelector(".recipe__details"), isLiked);
+    this.ingredientsList.render(
       document.querySelector(".recipe__ingredients"),
       recipe.ingredients
     );
   }
 
+  /**
+   *
+   * @param {string} src
+   * @param {string} alt
+   * @param {string} title
+   */
   createImageFigure(src, alt, title) {
     /*<figure class="recipe__fig">
                 <img src="${recipe.image_url}" alt="${recipe.title}" class="recipe__img">
@@ -159,25 +178,27 @@ class $Main {
   }
 
   addEvent() {
+    const recipeModel = this.recipeModel;
+    const ingredientList = this.ingredientsList;
+
     function updateServings() {
       // Update Servings & IngredientsList
       document.querySelector(".recipe__info-data--people").textContent =
-        state.recipe.result.servings;
-      IngredientsList.render(
+        recipeModel.result.servings;
+      ingredientList.render(
         document.querySelector(".recipe__ingredients"),
-        state.recipe.result.ingredients
+        recipeModel.result.ingredients
       );
     }
 
     this.element.addEventListener("click", (e) => {
       if (e.target.matches(".btn-decrease, .btn-decrease *")) {
         // console.log(e.target)
-        if (state.recipe.result.servings > 1)
-          state.recipe.updateServings("dec");
+        if (recipeModel.result.servings > 1) recipeModel.updateServings("dec");
         updateServings();
       }
       if (e.target.matches(".btn-increase, .btn-increase *")) {
-        state.recipe.updateServings("inc");
+        recipeModel.updateServings("inc");
         updateServings();
       }
 
@@ -188,4 +209,4 @@ class $Main {
   }
 }
 
-export const Main = new $Main();
+export default Main;

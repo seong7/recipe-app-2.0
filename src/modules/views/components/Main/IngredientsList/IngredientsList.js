@@ -1,28 +1,39 @@
-import {List} from './List/List.js'
+import List from "./List/List.js";
 
-class $IngredientsList {
-    constructor() {
-        this.element = document.createElement("ul");
-        this.element.className = "recipe__ingredient-list";
-    }
+class IngredientsList {
+  constructor() {
+    this.list = new List();
 
-    renderList(ingredients) {
-        // console.log(ingredients);
-        this.clear();
-        const list = ingredients.map((el) => List.createIngredient(el)).join("");
-        this.element.insertAdjacentHTML("afterbegin", list);
-    }
+    this.element = document.createElement("ul");
+    this.element.className = "recipe__ingredient-list";
+  }
 
-    render ($target, ingredients) {
-        this.renderList(ingredients);
-        $target.insertAdjacentElement("afterbegin", this.element);
-    }
+  /**
+   *
+   * @param {Array} ingredients
+   */
+  renderList(ingredients) {
+    // console.log(ingredients);
+    this.clear();
+    const list = ingredients
+      .map((el) => this.list.createIngredient(el))
+      .join("");
+    this.element.insertAdjacentHTML("afterbegin", list);
+  }
 
-    clear () {
-        this.element.innerHTML = "";
-    }
+  /**
+   *
+   * @param {HTMLElement} target
+   * @param {Array} ingredients
+   */
+  render(target, ingredients) {
+    this.renderList(ingredients);
+    target.insertAdjacentElement("afterbegin", this.element);
+  }
 
-
+  clear() {
+    this.element.innerHTML = "";
+  }
 }
 
-export const IngredientsList = new $IngredientsList();
+export default IngredientsList;

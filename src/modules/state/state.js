@@ -3,10 +3,10 @@ class State {
   // _key 배열에 미리 정해둔 key 들만 저장할 수 있음
 
   constructor() {
-    this.search;
-    this.recipe;
-    this.likes;
-    this.list;
+    this._search;
+    this._recipe;
+    this._likes;
+    this._list;
     this._key = ["search", "recipe", "likes", "shopping", "test"];
 
     this.test = ["Test Pass"];

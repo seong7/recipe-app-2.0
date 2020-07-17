@@ -11,7 +11,7 @@ let state;
 
 let header;
 let nav;
-let Main;
+let main;
 let Footer;
 let alerts;
 
@@ -35,12 +35,12 @@ export const initController = () => {
   alerts = new View.Alerts();
   header = new View.Header(state.get("shopping"), state.get("likes"), alerts);
   nav = new View.Nav(state.get("search"));
-  Main = View.Main;
+  main = new View.Main(state.get("recipe"));
   Footer = View.Footer;
 
   header.render(document.querySelector("#App"));
   nav.render(document.querySelector("#App"));
-  Main.render(document.querySelector("#App"));
+  main.render(document.querySelector("#App"));
   Footer.render(document.querySelector("#App"));
   alerts.initRender(document.querySelector("#App"));
 
@@ -126,14 +126,13 @@ export const recipeController = async () => {
   const rId = window.location.hash.replace("#", "");
   // console.log("recipeController")
 
-  const Main = View.Main;
   const Loader = View.Loader;
   const recipeModel = state.get("recipe");
   const likesModel = state.get("likes");
 
   if (rId) {
-    Main.clear();
-    Loader.render(Main.element, "main");
+    main.clear();
+    Loader.render(main.element, "main");
     try {
       await recipeModel.getRecipe(fetch, rId);
       // console.log(res);
@@ -141,7 +140,7 @@ export const recipeController = async () => {
       recipeModel.calcTime();
       recipeModel.calcServings();
 
-      Main.renderRecipe(recipeModel.result, likesModel.isLiked(rId));
+      main.renderRecipe(recipeModel.result, likesModel.isLiked(rId));
 
       nav.resultList.hightlightSelected(rId);
       localStorage.setItem("lastId", rId);
