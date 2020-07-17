@@ -1,25 +1,43 @@
-import state from "../../../state/state.js";
 import { ResultList, PageBtn } from "../..";
+import { SearchModel } from "../../../models/models.js";
 
-class $Nav {
-  constructor() {
+class Nav {
+  /**
+   *
+   * @param {SearchModel} searchModel
+   */
+  constructor(searchModel) {
+    this.searchModel = searchModel;
+
+    this.resultList = new ResultList();
+    this.pageBtn = new PageBtn();
+
     this.element = document.createElement("nav");
     this.element.className = "nav results";
     this.addEvent();
   }
 
+  /**
+   *
+   * @param {HTMLElement} target
+   */
   render(target) {
     target.appendChild(this.element);
   }
 
+  /**
+   *
+   * @param {Array} searchResults
+   * @param {number} page
+   */
   renderList(searchResults, page = 1) {
-    const $Resultlist = ResultList.render(searchResults, page, 10);
+    const list = this.resultList.render(searchResults, page, 10);
     this.clearNav();
-    this.element.appendChild($Resultlist);
+    this.element.appendChild(list);
     // 아래는 페이지 버튼
     this.element.insertAdjacentHTML(
       "beforeend",
-      PageBtn.render(page, searchResults.length, 10)
+      this.pageBtn.render(page, searchResults.length, 10)
     );
   }
 
@@ -35,10 +53,10 @@ class $Nav {
 
       if (btn) {
         const goToPage = parseInt(btn.dataset.goto, 10); // 10 진수로 바꿈
-        this.renderList(state.get("search").result, goToPage);
+        this.renderList(this.searchModel.result, goToPage);
       }
     });
   }
 }
 
-export const Nav = new $Nav();
+export default Nav;

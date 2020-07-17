@@ -10,7 +10,7 @@ import {
 let state;
 
 let header;
-let Nav;
+let nav;
 let Main;
 let Footer;
 let alerts;
@@ -34,12 +34,12 @@ export const initController = () => {
 
   alerts = new View.Alerts();
   header = new View.Header(state.get("shopping"), state.get("likes"), alerts);
-  Nav = View.Nav;
+  nav = new View.Nav(state.get("search"));
   Main = View.Main;
   Footer = View.Footer;
 
   header.render(document.querySelector("#App"));
-  Nav.render(document.querySelector("#App"));
+  nav.render(document.querySelector("#App"));
   Main.render(document.querySelector("#App"));
   Footer.render(document.querySelector("#App"));
   alerts.initRender(document.querySelector("#App"));
@@ -70,25 +70,24 @@ export const initController = () => {
  * @param {string} query query to search
  */
 export const searchController = async (query) => {
-  const Nav = View.Nav;
   const Loader = View.Loader;
 
   // const temp = Nav.element.innerHTML;
 
   if (query) {
-    Loader.render(Nav.element, "nav");
+    Loader.render(nav.element, "nav");
     const searchModel = state.get("search");
 
     try {
       await searchModel.getResults(fetch, query);
-      Nav.renderList(searchModel.result);
+      nav.renderList(searchModel.result);
       localStorage.setItem("lastSearch", query);
     } catch (error) {
       if (error.message === "해당 음식 정보가 없습니다.") {
         // alert(error.message);
         // Alert.setState({visible: true, message: "해당 음식 정보가 없습니다.", color: "red"});
         alerts.renderAlert(error.message, "red");
-        // Nav.element.innerHTML = temp;
+        // nav.element.innerHTML = temp;
       } else throw error;
     } finally {
       Loader.remove("nav");
@@ -129,7 +128,6 @@ export const recipeController = async () => {
 
   const Main = View.Main;
   const Loader = View.Loader;
-  const ResultList = View.ResultList;
   const recipeModel = state.get("recipe");
   const likesModel = state.get("likes");
 
@@ -145,7 +143,7 @@ export const recipeController = async () => {
 
       Main.renderRecipe(recipeModel.result, likesModel.isLiked(rId));
 
-      ResultList.hightlightSelected(rId);
+      nav.resultList.hightlightSelected(rId);
       localStorage.setItem("lastId", rId);
     } catch (e) {
       if (e.message === "해당 Recipe 정보가 없습니다.") alert(e.message);

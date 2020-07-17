@@ -1,6 +1,12 @@
-class $PageBtn {
+class PageBtn {
   constructor() {}
 
+  /**
+   *
+   * @param {number} page
+   * @param {number} numResults
+   * @param {number} resPerPage
+   */
   render(page, numResults, resPerPage) {
     const pages = Math.ceil(numResults / resPerPage); // 전체 페이지 수
 
@@ -23,6 +29,11 @@ class $PageBtn {
     return button;
   }
 
+  /**
+   *
+   * @param {number} page
+   * @param {string} type
+   */
   createButton(page, type) {
     // data-goto 속성 :: 중요 !!
     //   해당 DOM.dataset.goto  으로 값 가져올 수 있음 (HTML 5 기능)
@@ -40,4 +51,4 @@ class $PageBtn {
   }
 }
 
-export const PageBtn = new $PageBtn();
+export default PageBtn;

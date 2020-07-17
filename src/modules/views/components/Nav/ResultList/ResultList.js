@@ -1,12 +1,18 @@
 import { Image } from "../../..";
 
-class $ResultList {
+class ResultList {
   constructor() {
     const ul = document.createElement("ul");
     ul.className = "results__list";
     this.element = ul;
   }
 
+  /**
+   *
+   * @param {Array} results
+   * @param {number} page
+   * @param {number} resPerpage
+   */
   render(results, page, resPerpage) {
     // 페이지 별 render 할 results 배열 내 index 지정
     const start = (page - 1) * resPerpage;
@@ -17,6 +23,10 @@ class $ResultList {
     return this.element;
   }
 
+  /**
+   *
+   * @param {Object} result
+   */
   addLi(result) {
     // figure 생성
     const figure = document.createElement("figure");
@@ -52,6 +62,10 @@ class $ResultList {
   }
 
   // 선택된 li 강조
+  /**
+   *
+   * @param {string} id
+   */
   hightlightSelected(id) {
     // 기존 선택 음식 active 삭제
     const prevSelected = document.querySelector(".results__link--active");
@@ -71,7 +85,7 @@ class $ResultList {
   }
 }
 
-export const ResultList = new $ResultList();
+export default ResultList;
 
 // window.checkImg = () => {
 //     console.log(ResultList.img.complete);
