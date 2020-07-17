@@ -1,11 +1,13 @@
-import { SearchInput } from "./SearchInput/SearchInput.js";
-import {searchController} from "../../../../controllers/controller.js";
+import SearchInput from "./SearchInput/SearchInput.js";
+import { searchController } from "../../../../controllers/controller.js";
 
-class $SearchForm {
+class SearchForm {
   constructor() {
+    this.searchInput = new SearchInput();
+
     this.element = document.createElement("form");
     this.element.className = "search";
-    this.element.appendChild(SearchInput.element);
+    this.element.appendChild(this.searchInput.element);
     this.element.insertAdjacentHTML(
       "beforeend",
       `
@@ -38,16 +40,13 @@ class $SearchForm {
   addEvent() {
     this.element.addEventListener("submit", (e) => {
       e.preventDefault();
-      const query = SearchInput.getInput();
-      if(query){
+      const query = this.searchInput.getInput();
+      if (query) {
         searchController(query);
-        SearchInput.clearInput();
+        this.searchInput.clearInput();
       }
     });
   }
-  // render(target) {
-  //   target.insertAdjacentHTML("afterbegin", this.markup);
-  // }
 }
 
-export const SearchForm = new $SearchForm();
+export default SearchForm;

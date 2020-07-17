@@ -1,13 +1,12 @@
-class $SearchInput {
+class SearchInput {
   constructor() {
     this.element = document.createElement("input");
     this.element.className = "search__field";
     this.element.setAttribute("type", "text");
     this.element.setAttribute("placeholder", "try pizza, pasta, fries ...");
-    
   }
 
-  clearInput () {
+  clearInput() {
     this.element.value = "";
   }
   getInput() {
@@ -15,5 +14,4 @@ class $SearchInput {
   }
 }
 
-export const SearchInput = new $SearchInput();
-
+export default SearchInput;
