@@ -28,10 +28,10 @@ export const initController = () => {
   const likesModel = new LikesModel();
   const shoppingModel = new ShoppingModel();
 
-  const search = state.set("search", searchModel);
-  const recipe = state.set("recipe", recipeModel);
-  const likes = state.set("likes", likesModel);
-  const shopping = state.set("shopping", shoppingModel);
+  state.set("search", searchModel);
+  state.set("recipe", recipeModel);
+  state.set("likes", likesModel);
+  state.set("shopping", shoppingModel);
 
   alerts = new View.Alerts();
   header = new View.Header(state.get("shopping"), state.get("likes"), alerts);
