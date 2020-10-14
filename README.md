@@ -16,14 +16,13 @@
 
 ## 부가 설명
 
-- ES6+기반의 **Front-end** 프로젝트입니다.
+- Vanilla JS (ES6+) 기반의 **Front-end** 프로젝트입니다.
 - Jest 를 사용해 부분적인 **TDD** 를 시행하였습니다.
 - 기존 Version 1.0 에서 코드의 유지보수성을 높이기 위해 **refactoring** 시행하여 Version 2.0 을 개발하였습니다.
-- **MVC 패턴**과 **OOP 개념**에 맞춰 작성되었습니다.
-- React.js 를 모티브로 **Component 단위의 구조**로 설계하였습니다.
-- Redux 를 모티브로 **Global State Management** 를 도입하였습니다.
-- build 를 위해 **Webpack** 을 사용했습니다.
-- UX 를 향상 시키기 위해 다양한 **사용자 친화적 요소**를 추가했습니다.
+- 비즈니스 로직과 렌더링을 분리시킨 **MVC 패턴**을 구현하였습니다.
+- React.js 를 모티브로 **Class Component 의 구조**로 설계하였습니다.
+- **Global State Management** 를 도입하였습니다.
+- build 를 위해 **Webpack** 을 직접 설정하고 사용했습니다.
 - **반응형**으로 디자인 되었습니다.
 
 ## 기술 스택
@@ -32,21 +31,15 @@
 - HTML5 / CSS3
 - Babel / Webpack / Jest
 
-## 명령어
+## 실행 명령어
 
 ```bash
 - dependency 설치 :
 $ npm install
-
-- dependency version 업데이트 :
-$ npm update
 
 - webpack dev server 시작 (development mode) :
 $ npm start
 
 - test :
 $ npm test
-
-- 변경 사항 있을 때마다 자동 test :
-$ npm run watch
 ```
